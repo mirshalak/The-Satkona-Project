@@ -1,0 +1,49 @@
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# hexgate-system
+
+Description:-
+
+\- Hexagonal shape.  Sides must be a minimum of 9.5 units (a unit consists of 4 square tiles) in length.
+
+\- 12 chevrons, although I prefer to call them registers, since mine don’t animate the way the ones in the Stargate IP do.
+
+\- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  That is why preferred side length is 10.5 units of 4 cubes/tiles per unit.  That allows 4 units between each vertex and midpoint.
+
+\- Each register can contain 3 digits, with a range of 0-9.
+
+\- The dial home device has a seven segment display.  The displays are arranged in three vertical and four horizontal lines.
+
+\- There are 12 registers, which can hold three digits each; 000-999.  This gives me one undecillion potential addresses.
+
+\- 11 out of 12 registers will be locked for most uses.  This gives me an initial address pool of 1,000, with more if I need them later.  If the need increases, the computational capacity will have to as well.
+
+\- A 13th register has been added, as a new first register; the type identifier.  This register will not be visible to or usable by the hexgates, which will have a first register value of 001 to the rest of the system.
+
+Current first register values are:-
+
+001 - Hexgates
+002 - Computers
+003 - Storage drives
+004 - Directories
+005 - Files
+006 - Variables - Ensure that these are temporary and recycled when no longer needed.
+007 - Functions
+008 - Random seeds - Ensure that these are temporary and recycled when no longer needed.
+999 - Translated subnet anchors
+
+\- I have been given a means of adding potentially infinite new networks.  The last gate in a current network (999-999-999-999-999-999-999-999-999-999-999-999) interprets its’ dialled address as that of another entire network, and will connect to the first gate within that network.  This ability to go between entire networks is exclusively limited to 999-999-999-999-999-999-999-999-999-999-999-999 in the current network, and 000-000-000-000-000-000-000-000-000-000-000-001 in the next, for security purposes, and this should not be changed as it confers numerous benefits.  Gates 999-999-999-999-999-999-999-999-999-999-999-998 and 999-999-999-999-999-999-999-999-999-999-999-999 should always be built in the same hex, as 998 will provide the only two way travel possible between 999 and the rest of the current network.
+
+\- For items within types 002 and 007, 000-000-000-000-000-000-000-000-000-000-000-000 is a universal exit and reset command, which can be sent as a second string, after the item’s current address has been connected to.  A new address for the item can then be sent as a third string.  This permits extremely rapid, dynamic reconfiguration of devices on demand.
+
+\- There is now a second type of addressing system.  There are still 12 registers, but the number range of each, is now 00 to 36.  This is to incorporate Sanders Evers’ Hexmod system, where a hexagonal grid is represented with the numbers 00 to 36.

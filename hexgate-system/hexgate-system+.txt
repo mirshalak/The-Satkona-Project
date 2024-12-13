@@ -18,7 +18,8 @@ Description:-
 
 \- 12 chevrons, although I prefer to call them registers, since mine don’t animate the way the ones in the Stargate IP do.
 
-\- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  That is why preferred side length is 10.5 units of 4 cubes/tiles per unit.  That allows 4 units between each vertex and midpoint.
+\- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  
+That is why preferred side length is 10.5 units of 4 cubes/tiles per unit.  That allows 4 units between each vertex and midpoint.
 
 \- Each register can contain 3 digits, with a range of 0-9.
 
@@ -26,9 +27,11 @@ Description:-
 
 \- There are 12 registers, which can hold three digits each; 000-999.  This gives me one undecillion potential addresses.
 
-\- 11 out of 12 registers will be locked for most uses.  This gives me an initial address pool of 1,000, with more if I need them later.  If the need increases, the computational capacity will have to as well.
+\- 11 out of 12 registers will be locked for most uses.  This gives me an initial address pool of 1,000, with more if I need them later.  
+If the need increases, the computational capacity will have to as well.
 
-\- A 13th register has been added, as a new first register; the type identifier.  This register will not be visible to or usable by the hexgates, which will have a first register value of 001 to the rest of the system.
+\- A 13th register has been added, as a new first register; the type identifier.  
+This register will not be visible to or usable by the hexgates, which will have a first register value of 001 to the rest of the system.
 
 Current first register values are:-
 

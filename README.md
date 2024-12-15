@@ -1,15 +1,23 @@
 EDIT 16/12/2024:-
 
-I have just changed the license of this repository and all files, from 
-Apache 2.0 to ISC.  My initial choice of the Apache 2.0 license was driven by 
-concerns about ensuring the long-term availability of this code. However, 
-I have always aspired to use a simpler, BSD-compatible license that aligns 
-with the principles of open collaboration and unrestricted use.
+I have changed the license of this repository and all its files from Apache 2.0 to ISC.
 
-More than that, however, the decision to choose the ISC license is considered
-irreducibly deontological; I am doing it simply because I believe it is right, 
-regardless of the consequences.  The Hexgate System in particular, being made 
-purely of numbers as it is, is rightfully the property of the infinite Universe.
+My initial choice of the Apache 2.0 license was motivated by concerns about ensuring the 
+long-term availability of this code. However, I have always aspired to use a simpler, 
+BSD-compatible license that aligns with the principles of open collaboration and 
+unrestricted use.
+
+The decision to switch to the ISC license is grounded in ethical considerations. I believe 
+in the simplicity and freedom that permissive licensing provides, and I no longer feel the 
+need for additional legal safeguards against hypothetical risks.
+
+As Theo de Raadt once said, "there is no right to avoid being sued," and I accept this 
+reality. More importantly, I have chosen the ISC license because it is, in my view, 
+the right thing to do, regardless of the consequences.
+
+This change reinforces my commitment to making this code freely available for any purpose, 
+in the true spirit of open source. The Hexgate System, composed entirely of numbers, 
+is dedicated as a gift to the infinite Universe, whose order it reflects and serves.
 
 This is the repository of The Satkona Project.
 

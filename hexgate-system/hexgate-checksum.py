@@ -30,9 +30,9 @@ def generate_hexgate_address():
     return "-".join(address)
 
 def hash_hexgate_address(hexgate_address):
-    """
-    Hash the Hexgate address using SHA-512.
-    """
+    
+    # Hash the Hexgate address using SHA-512.
+    
     return hashlib.sha512(hexgate_address.encode()).hexdigest()
 
 def generate_checksum(file_path, hexgate_address=None, output_checksum_file=None):
@@ -75,9 +75,9 @@ def generate_checksum(file_path, hexgate_address=None, output_checksum_file=None
     return checksum
 
 def verify_checksum(file_path, hexgate_address, checksum_file):
-    """
-    Verify the checksum of a given file using the hashed Hexgate address from the metadata.
-    """
+    
+    # Verify the checksum of a given file using the hashed Hexgate address from the metadata.
+    
     # Hash the provided Hexgate address
     hashed_hexgate = hash_hexgate_address(hexgate_address)
     

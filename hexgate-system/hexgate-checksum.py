@@ -19,11 +19,11 @@ import json
 import random
 
 def generate_hexgate_address():
-    """
-    Generate a random Hexgate address.
-    - First register is the type identifier for hexgates.
-    - Remaining 12 registers are random 3-digit numbers.
-    """
+
+    # Generate a random Hexgate address.
+    # - First register is the type identifier for hexgates.
+    # - Remaining 12 registers are random 3-digit numbers.
+    
     type_identifier = "008"  # Hexgate type identifier
     registers = [f"{random.randint(0, 999):03d}" for _ in range(12)]
     address = [type_identifier] + registers

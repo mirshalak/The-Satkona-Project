@@ -27,7 +27,7 @@ That is why preferred side length is 10.5 units of 4 cubes/tiles per unit.  That
 
 \- Each register can contain 3 digits, with a range of 0-9.
 
-\- The dial home device has a seven segment display.  The displays are arranged in three vertical and four horizontal lines.
+\- The Hexgate Dialing Interface (HDI) has a seven segment display.  The displays are arranged in three vertical and four horizontal lines.
 
 \- There are 12 registers, which can hold three digits each; 000-999.  This gives me one undecillion potential addresses.
 

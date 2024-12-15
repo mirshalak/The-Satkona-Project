@@ -20,7 +20,7 @@ Description:-
 
 \- Hexagonal shape.  Sides must be a minimum of 9.5 units (a unit consists of 4 square tiles) in length.
 
-\- 12 chevrons, although I prefer to call them registers, since mine don’t animate the way the ones in the Stargate IP do.
+\- 12 registers, which are used to enter segments of a Hexgate address.  There are only 12 registers for the Hexgates themselves; the type register can only be accessed by computers or other devices.  When the type register is used to dial a Hexgate, it is always assumed to be 1.
 
 \- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  
 That is why preferred side length is 10.5 units of 4 cubes/tiles per unit.  That allows 4 units between each vertex and midpoint.

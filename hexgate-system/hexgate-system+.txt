@@ -48,7 +48,7 @@ Current first register values are:-
 008 - Random seeds - Ensure that these are temporary and recycled when no longer needed.
 999 - Translated subnet anchors
 
-\- Although the subnet type will remain, travel between different networks of hexgates, is accomplished by storing the address of the galaxy itself,
+\- Although the subnet type will remain, travel between different networks of hexgates, is accomplished by giving an address to the network itself.  A second network would be dialled by first entering the network address, and then the individual gate address; although travel within the same network would be assumed by default, which would require the dialling of only one address in most cases.  This is a lot more complex than other systems, but it also provides a much larger address space.
 
 \- For items within types 002 and 007, 000-000-000-000-000-000-000-000-000-000-000-000 is a universal exit and reset command, which can be sent as a second string, after the item’s current address has been connected to.  A new address for the item can then be sent as a third string.  This permits extremely rapid, dynamic reconfiguration of devices on demand.
 

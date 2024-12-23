@@ -14,38 +14,27 @@
 # OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR 
 # PERFORMANCE OF THIS SOFTWARE.
 
-# Hexgate System
+# hexgate-system
 
-The Hexgate system is my design for a hexagonal portal network, inspired by 
-general theoretical physics concepts such as Einstein-Rosen Bridges. While 
-it draws from these scientific ideas, the Hexgate system is distinct and 
-does not replicate or reference any specific fictional or proprietary works.
-
-Originally conceived as a thought experiment, the Hexgate design introduces 
-a unique addressing system with broad potential applications. Some of these 
-applications are already demonstrated in the code within this repository.
-
+My hexagonal stargate network design.  The addressing system is not completely my own work; I give credit to Sander Evers, the author of the [Hexmod representation](https://observablehq.com/@sanderevers/hexmod-representation?collection=@sanderevers/hex).  
 
 Description:-
 
 \- Hexagonal shape.  Sides must be a minimum of 9.5 units (a unit consists of 4 square tiles) in length.
 
-\- 12 registers, which are used to enter segments of a Hexgate address.  There are only 12 registers for the Hexgates themselves; the type register can only be accessed by computers or other devices.  When the type register is used to dial a Hexgate, it is always assumed to be 1.
+\- 12 chevrons, although I prefer to call them registers, since mine don’t animate the way the ones in the Stargate IP do.
 
-\- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  
-That is why preferred side length is 10.5 units of 4 cubes/tiles per unit.  That allows 4 units between each vertex and midpoint.
+\- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  That is why preferred side length is 10.5 units of 4 cubes/tiles per unit.  That allows 4 units between each vertex and midpoint.
 
 \- Each register can contain 3 digits, with a range of 0-9.
 
-\- The Hexgate Dialing Interface (HDI) has a seven segment display.  The displays are arranged in three vertical and four horizontal lines.
+\- The dial home device has a seven segment display.  The displays are arranged in three vertical and four horizontal lines.
 
 \- There are 12 registers, which can hold three digits each; 000-999.  This gives me one undecillion potential addresses.
 
-\- 11 out of 12 registers will be locked for most uses.  This gives me an initial address pool of 1,000, with more if I need them later.  
-If the need increases, the computational capacity will have to as well.
+\- 11 out of 12 registers will be locked for most uses.  This gives me an initial address pool of 1,000, with more if I need them later.  If the need increases, the computational capacity will have to as well.
 
-\- A 13th register has been added, as a new first register; the type identifier.  
-This register will not be visible to or usable by the hexgates, which will have a first register value of 001 to the rest of the system.
+\- A 13th register has been added, as a new first register; the type identifier.  This register will not be visible to or usable by the hexgates, which will have a first register value of 001 to the rest of the system.
 
 Current first register values are:-
 
@@ -59,11 +48,11 @@ Current first register values are:-
 008 - Random seeds - Ensure that these are temporary and recycled when no longer needed.
 999 - Translated subnet anchors
 
-\- I have been given a means of adding potentially infinite new networks.  The last gate in a current network (999-999-999-999-999-999-999-999-999-999-999-999) interprets its’ dialled address as that of another entire network, and will connect to the first gate within that network.  This ability to go between entire networks is exclusively limited to 999-999-999-999-999-999-999-999-999-999-999-999 in the current network, and 000-000-000-000-000-000-000-000-000-000-000-001 in the next, for security purposes, and this should not be changed as it confers numerous benefits.  Gates 999-999-999-999-999-999-999-999-999-999-999-998 and 999-999-999-999-999-999-999-999-999-999-999-999 should always be built in the same hex, as 998 will provide the only two way travel possible between 999 and the rest of the current network.
+\- Although the subnet type will remain, travel between different networks of hexgates, is accomplished by storing the address of the galaxy itself,
 
 \- For items within types 002 and 007, 000-000-000-000-000-000-000-000-000-000-000-000 is a universal exit and reset command, which can be sent as a second string, after the item’s current address has been connected to.  A new address for the item can then be sent as a third string.  This permits extremely rapid, dynamic reconfiguration of devices on demand.
 
-\- There is now a second type of addressing system.  There are still 12 registers, but the number range of each, is now 00 to 36.  This is to incorporate Sanders Evers’ Hexmod system, where a hexagonal grid is represented with the numbers 00 to 36.
+\- There is now a second type of addressing system.  There are still 12 registers, but the number range of each, is now 00 to 36.  This is to incorporate Sander Evers’ Hexmod system, where a hexagonal grid is represented with the numbers 00 to 36.
 
 \- Agent navigation through a hexgate works via two constants and a stack.  The first constant stores the address of the current hexagonal cell, the second constant stores the address of the next hexagonal cell, and the stack stores up to 37 previous addresses.
 

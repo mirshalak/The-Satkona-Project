@@ -16,15 +16,15 @@
 
 # hexgate-system
 
-My hexagonal stargate network design.  The addressing system is not completely my own work; I give credit to Sander Evers, the author of the [Hexmod representation](https://observablehq.com/@sanderevers/hexmod-representation?collection=@sanderevers/hex).  
+My hexagonal portal network design.  The addressing system is not completely my own work; I give credit to Sander Evers, the author of the [Hexmod representation](https://observablehq.com/@sanderevers/hexmod-representation?collection=@sanderevers/hex).  
 
 Description:-
 
 \- Hexagonal shape.  Sides must be a minimum of 9.5 units (a unit consists of 4 square tiles) in length.
 
-\- 12 chevrons, although I prefer to call them registers, since mine don’t animate the way the ones in the Stargate IP do.
+\- 12 address segment containers.  I call them registers.
 
-\- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  That is why preferred side length is 10.5 units of 4 cubes/tiles per unit.  That allows 4 units between each vertex and midpoint.
+\- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  That is why preferred side length is 12.5 units of 4 cubes/tiles per unit.  That allows 5 units between each vertex and midpoint.  If I'm building prisms, then except for the vertices and midpoints, I get 1 single unit door every third unit if I want it.
 
 \- Each register can contain 3 digits, with a range of 0-9.
 

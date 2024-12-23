@@ -64,3 +64,11 @@ Current first register values are:-
 \- For items within types 002 and 007, 000-000-000-000-000-000-000-000-000-000-000-000 is a universal exit and reset command, which can be sent as a second string, after the item’s current address has been connected to.  A new address for the item can then be sent as a third string.  This permits extremely rapid, dynamic reconfiguration of devices on demand.
 
 \- There is now a second type of addressing system.  There are still 12 registers, but the number range of each, is now 00 to 36.  This is to incorporate Sanders Evers’ Hexmod system, where a hexagonal grid is represented with the numbers 00 to 36.
+
+\- Agent navigation through a hexgate works via two constants and a stack.  The first constant stores the address of the current hexagonal cell, the second constant stores the address of the next hexagonal cell, and the stack stores up to 37 previous addresses.
+
+\- Hexagonal cells have been calculated as requiring a side length of 100 kb, which offers 24.681 Mb of space per cell, for a minimal Linux system, which enables a 1:1 ratio of disk space to RAM.  This also just barely allows for 24 1024 kb blocks, for the purpose of creating a file system with Fat32 or others.
+
+I am not going to try to totally reinvent the wheel in terms of my operating system, or at least not yet.  For the moment, I will use Linux. 
+
+Hexel advised me to use solid state drives to reduce the speed disparity between both, but I am still anxious about the longevity of SSDs in comparison with magnetic drives, even though the latter are slower.

@@ -31,6 +31,7 @@ The virtual terrain navigation subsystem is inspired by Sander Evers' [Hexmod re
   - The first 6 registers are positioned at the vertices of the hexagon.
   - The next 6 registers are located at the midpoints of the edges between vertices.
   - The preferred side length of the hexagon is 12.5 units, with 4 tiles/cubes per unit. This allows 5 units of spacing between each vertex and midpoint.
+  - Because only 12 registers can physically fit on the hexagonal shape, the type identifier register is only ever used by computers, not hexgates themselves.
 
 - **Registers and Addressing**:
   - Each register can hold a 3-digit number ranging from 0 to 9.

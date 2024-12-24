@@ -14,50 +14,71 @@
 # OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR 
 # PERFORMANCE OF THIS SOFTWARE.
 
-# hexgate-system
+## Hexgate System
 
-My hexagonal portal network design.  The addressing system is not completely my own work; I give credit to Sander Evers, the author of the [Hexmod representation](https://observablehq.com/@sanderevers/hexmod-representation?collection=@sanderevers/hex).  
+This document outlines the design and functionality of a hexagonal portal network, referred to as the Hexgate System.  The system originated as the result of a thought experiment, to see if such a portal system could be designed to be hexagonal instead of circular.  The numerical structure was also inspired by the Mayan Long Count Calendar system.
 
-Description:-
+The virtual terrain navigation subsystem is inspired by Sander Evers' [Hexmod representation](https://observablehq.com/@sanderevers/hexmod-representation?collection=@sanderevers/hex).
 
-\- Hexagonal shape.  Sides must be a minimum of 9.5 units (a unit consists of 4 square tiles) in length.
+### Key Features:
 
-\- 12 address segment containers.  I call them registers.
+- **Hexagonal Structure**:
+  - The Hexgate is hexagonal in shape with 12 registers, which function similarly to "chevrons" in other stargate systems. However, these registers are non-animated and fixed.
 
-\- The first 6 registers occupy the vertices.  The second 6 registers occupy the midpoints between the vertices.  That is why preferred side length is 12.5 units of 4 cubes/tiles per unit.  That allows 5 units between each vertex and midpoint.  If I'm building prisms, then except for the vertices and midpoints, I get 1 single unit door every third unit if I want it.
+- **Register Placement**:
+  - The first 6 registers are positioned at the vertices of the hexagon.
+  - The next 6 registers are located at the midpoints of the edges between vertices.
+  - The preferred side length of the hexagon is 12.5 units, with 4 tiles/cubes per unit. This allows 5 units of spacing between each vertex and midpoint.
 
-\- Each register can contain 3 digits, with a range of 0-9.
+- **Registers and Addressing**:
+  - Each register can hold a 3-digit number ranging from 0 to 9.
+  - A complete Hexgate address comprises 13 registers:
+    - The **first register** serves as a type identifier.
+    - The next 12 registers form the address of the target hexgate.
+  - Example addresses:
+    - Without type identifier: `098-639-513-096-733-491-511-977-946-059-167-505`
+    - With type identifier (Random Seeds - 008): `008-098-639-513-096-733-491-511-977-946-059-167-505`
 
-\- The dial home device has a seven segment display.  The displays are arranged in three vertical and four horizontal lines.
+### Type Identifier Values:
 
-\- There are 12 registers, which can hold three digits each; 000-999.  This gives me one undecillion potential addresses.
+The type identifier (first register) determines the nature of the address:
 
-\- 11 out of 12 registers will be locked for most uses.  This gives me an initial address pool of 1,000, with more if I need them later.  If the need increases, the computational capacity will have to as well.
+- **001**: Hexgates
+- **002**: Computers
+- **003**: Storage drives
+- **004**: Directories
+- **005**: Files
+- **006**: Variables (temporary and recycled when not needed)
+- **007**: Functions
+- **008**: Random seeds (temporary and recycled when not needed)
+- **999**: Translated subnet anchors
 
-\- A 13th register has been added, as a new first register; the type identifier.  This register will not be visible to or usable by the hexgates, which will have a first register value of 001 to the rest of the system.
+### Addressing Between Networks:
 
-Current first register values are:-
+- By default, a Hexgate assumes travel within the same network.
+- To connect to a different network, first dial the network address, followed by the specific gate address.
+- This system increases complexity but offers a significantly larger address space.
 
-001 - Hexgates
-002 - Computers
-003 - Storage drives
-004 - Directories
-005 - Files
-006 - Variables - Ensure that these are temporary and recycled when no longer needed.
-007 - Functions
-008 - Random seeds - Ensure that these are temporary and recycled when no longer needed.
-999 - Translated subnet anchors
+### Special Address Commands:
 
-\- Although the subnet type will remain, travel between different networks of hexgates, is accomplished by giving an address to the network itself.  A second network would be dialled by first entering the network address, and then the individual gate address; although travel within the same network would be assumed by default, which would require the dialling of only one address in most cases.  This is a lot more complex than other systems, but it also provides a much larger address space.
+- For items of types **002** (Computers) and **007** (Functions):
+  - `000-000-000-000-000-000-000-000-000-000-000-000` serves as a universal exit and reset command.
+  - Once connected to an item, this command can reset it, after which a new address can be sent to dynamically reconfigure the item.
 
-\- For items within types 002 and 007, 000-000-000-000-000-000-000-000-000-000-000-000 is a universal exit and reset command, which can be sent as a second string, after the item’s current address has been connected to.  A new address for the item can then be sent as a third string.  This permits extremely rapid, dynamic reconfiguration of devices on demand.
+### Virtual Navigation Mechanism:
 
-\- There is now a second type of addressing system.  There are still 12 registers, but the number range of each, is now 00 to 36.  This is to incorporate Sander Evers’ Hexmod system, where a hexagonal grid is represented with the numbers 00 to 36.
+- Navigation through a virtual hexagonal environment relies on two constants and a stack:
+  - The **first constant** stores the address of the current hexagonal cell.
+  - The **second constant** stores the address of the next hexagonal cell.
+  - The **stack** holds up to 37 previous addresses for backtracking purposes.
+  - For navigational purposes, every hexagonal cluster will be assumed to consist of 37 cells.  Each cell will contain its' own hexgate, permitting both linear and non-linear travel between cells. 
 
-\- Agent navigation through a hexgate works via two constants and a stack.  The first constant stores the address of the current hexagonal cell, the second constant stores the address of the next hexagonal cell, and the stack stores up to 37 previous addresses.
+### Storage and Computing:
 
-\- Hexagonal cells have been calculated as requiring a side length of 100 kb, which offers 24.681 Mb of space per cell, for a minimal Linux system, which enables a 1:1 ratio of disk space to RAM.  This also just barely allows for 24 1024 kb blocks, for the purpose of creating a file system with Fat32 or others.
+- Each hexagonal cell has a side length of 100 kilobytes (kb), providing:
+  - **24.681 megabytes (Mb)** of usable space per cell.
+  - A 1:1 ratio of disk space to RAM.
+  - Space for **24 1024-kb blocks**, allowing the use of file systems like FAT32.
+  - This configuration enables the deployment of a minimal Linux system within each cell.
 
-I am not going to try to totally reinvent the wheel in terms of my operating system, or at least not yet.  For the moment, I will use Linux. 
-
-Hexel advised me to use solid state drives to reduce the speed disparity between both, but I am still anxious about the longevity of SSDs in comparison with magnetic drives, even though the latter are slower.
+This Hexgate System combines a unique addressing structure, robust navigation mechanics, and a scalable design to enable complex inter-network communication and resource management.

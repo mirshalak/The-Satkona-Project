@@ -16,16 +16,13 @@
 
 import random
 
-def generate_hexgate_address():
-    # First register is always the type identifier for hexgates
-    type_identifier = "008"
-    
-    # Generate random values for all 12 registers
-    registers = [f"{random.randint(0, 999):03d}" for _ in range(12)]
-    
-    # Combine into the final address
-    address = [type_identifier] + registers
-    return "-".join(address)
+# Generate the 11 random numbers with hyphens
+addresses_with_hyphen = [f"{random.randint(100, 999)}-" for _ in range(11)]
 
-# Generate and display a random Hexgate address
-print(generate_hexgate_address())
+# Generate the final number without a hyphen
+final_number = f"{random.randint(100, 999)}"
+
+# Concatenate the numbers into the final string
+random_hexgate_addresses = ''.join(addresses_with_hyphen) + final_number
+
+print(random_hexgate_addresses)

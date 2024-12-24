@@ -16,7 +16,9 @@
 
 ## Hexgate System
 
-This document outlines the design and functionality of a hexagonal portal network, referred to as the Hexgate System.  The system originated as the result of a thought experiment, to see if such a portal system could be designed to be hexagonal instead of circular.  The numerical structure was also inspired by the Mayan Long Count Calendar system.
+This document outlines the design and functionality of a hexagonal portal network, referred to as the Hexgate System.  
+The system originated as the result of a thought experiment, to see if such a portal system could be designed to be hexagonal instead of circular.  
+The numerical structure was also inspired by the Mayan Long Count Calendar system.
 
 The virtual terrain navigation subsystem is inspired by Sander Evers' [Hexmod representation](https://observablehq.com/@sanderevers/hexmod-representation?collection=@sanderevers/hex).
 

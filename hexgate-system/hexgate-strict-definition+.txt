@@ -1,106 +1,77 @@
-# ISC License
-
-# Copyright (c) 2024 James Osborn
-
-# Permission to use, copy, modify, and/or distribute this software for any purpose 
-# with or without fee is hereby granted, provided that the above copyright notice 
-# and this permission notice appear in all copies.
-
-# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH 
-# REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY 
-# AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, 
-# INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM 
-# LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE 
-# OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR 
-# PERFORMANCE OF THIS SOFTWARE.
-
-## Hexgate System
-
-subject(hexgate addressing system).
-definition(Extensible addressing system.  This originated for use with a
-stargate network within a proposed computer game, but has since been found to
-have other applications).
-
-virtual-hexgate-unit-definition(4 cubes).
-virtual-hexgate-side-length(12.5 units).
-virtual-hexgate-vertices(6).
-virtual-hexgate-midpoints(6).
-virtual-hexgate-register-display-definition+01(present on the front (facing the user) of the
-hexgate's 6 vertices and 6 midpoints).
-virtual-hexgate-register-display-definition+02(7 segment LED).
-
-register-definition+01(memory cells for storing address segments).
-register-definition+02(13 registers in total).
-register-definition+03(All registers contain 3 digits).
-register-definition+04(Each digit has a valid range of 0-9).
-register-definition+05(Register 1 is the type identifier).
-register-definition+06(Registers 2-13 are address registers).
-
-{
-  "registers": [
-    {"register": 1, "value": "001"},
-    {"register": 2, "value": "098"},
-    {"register": 3, "value": "639"},
-    {"register": 4, "value": "513"},
-    {"register": 5, "value": "096"},
-    {"register": 6, "value": "733"},
-    {"register": 7, "value": "491"},
-    {"register": 8, "value": "511"},
-    {"register": 9, "value": "977"},
-    {"register": 10, "value": "946"},
-    {"register": 11, "value": "059"},
-    {"register": 12, "value": "167"},
-    {"register": 13, "value": "505"}
-  ]
-}
-
-complete-address-example(001-098-639-512-096-733-491-511-977-946-059-167-505).
-
-{
-  "type_identifiers": [
+    # ISC License
+    
+    # Copyright (c) 2024 James Osborn
+    
+    # Permission to use, copy, modify, and/or distribute this software for any purpose 
+    # with or without fee is hereby granted, provided that the above copyright notice 
+    # and this permission notice appear in all copies.
+    
+    # THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH 
+    # REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY 
+    # AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, 
+    # INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM 
+    # LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE 
+    # OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR 
+    # PERFORMANCE OF THIS SOFTWARE.
+    
+    ## Hexgate System
+    
+    subject(hexgate addressing system).
+    definition(Extensible addressing system.  This originated for use with a
+    stargate network within a proposed computer game, but has since been found to
+    have other applications).
+    
+    virtual-hexgate-unit-definition(4 cubes).
+    virtual-hexgate-side-length(12.5 units).
+    virtual-hexgate-vertices(6).
+    virtual-hexgate-midpoints(6).
+    virtual-hexgate-register-display-definition+01(present on the front (facing the user) of the
+    hexgate's 6 vertices and 6 midpoints).
+    virtual-hexgate-register-display-definition+02(7 segment LED).
+    
+    register-definition+01(memory cells for storing address segments).
+    register-definition+02(12 registers in total).
+    register-definition+03(All registers contain 3 digits).
+    register-definition+04(Each digit has a valid range of 0-9).
+    
     {
-      "id": "001",
-      "description": "Hexgates"
-    },
-    {
-      "id": "002",
-      "description": "Computers"
-    },
-    {
-      "id": "003",
-      "description": "Storage drives"
-    },
-    {
-      "id": "004",
-      "description": "Directories"
-    },
-    {
-      "id": "005",
-      "description": "Files"
-    },
-    {
-      "id": "006",
-      "description": "Variables",
-      "note": "Ensure that these are temporary and recycled when no longer needed."
-    },
-    {
-      "id": "007",
-      "description": "Words",
-      "note": "In FORTH terminology; functions in everything else."
-    },
-    {
-      "id": "008",
-      "description": "Random seeds",
-      "note": "Ensure that these are temporary and recycled when no longer needed."
-    },
-    {
-      "id": "999",
-      "description": "Translated subnet anchors"
+      "registers": [
+        {"register": 1, "value": "001"},
+        {"register": 2, "value": "098"},
+        {"register": 3, "value": "639"},
+        {"register": 4, "value": "513"},
+        {"register": 5, "value": "096"},
+        {"register": 6, "value": "733"},
+        {"register": 7, "value": "491"},
+        {"register": 8, "value": "511"},
+        {"register": 9, "value": "977"},
+        {"register": 10, "value": "946"},
+        {"register": 11, "value": "059"},
+        {"register": 12, "value": "167"},
+      ]
     }
-  ]
-}
-
-virtual-hexgate-dialling-workflow+01(Type identifier register is dialled first, which is always 001 for hexgates.)
-virtual-hexgate-dialling-workflow+02(Address registers 2-13 are then dialled next).
-virtual-hexgate-dialling-workflow+03(Event horizon of source hexgate becomes entangled with event horizon of destination hexgate).
-virtual-hexgate-dialling-workflow+04(Human travellers, AI agents, sufficiently small vehicles, or freight then pass through, depending on context).
+    
+    complete-address-example(001-098-639-512-096-733-491-511-977-946-059-167).
+    
+    virtual-hexgate-dialling-workflow+01(Type identifier register is dialled first, which is always 001 for hexgates.)
+    virtual-hexgate-dialling-workflow+02(Address registers 2-13 are then dialled next).
+    virtual-hexgate-dialling-workflow+03(Event horizon of source hexgate becomes entangled with event horizon of destination hexgate).
+    virtual-hexgate-dialling-workflow+04(Human travellers, AI agents, sufficiently small vehicles, or freight then pass through, depending on context).
+    
+    <hexgate> ::= <structure> <registers> <type-identifiers> <workflow>
+    
+    <structure> ::= "virtual-hexgate-unit-definition(" <integer> "cubes)" 
+                    "virtual-hexgate-side-length(" <float> "units)" 
+                    "virtual-hexgate-vertices(" <integer> ")" 
+                    "virtual-hexgate-midpoints(" <integer> ")" 
+                    "virtual-hexgate-register-display-definition+01(" <string> ")" 
+                    "virtual-hexgate-register-display-definition+02(" <string> ")"
+    
+    <registers> ::= "register-definition+01(" <string> ")" 
+                    "register-definition+02(" <integer> ")" 
+                    "register-definition+03(All registers contain " <integer> " digits)" 
+                    "register-definition+04(Each digit has a valid range of " <integer> "-" <integer> ")" 
+    
+    <workflow> ::= <step> {<step>}
+    <step> ::= "virtual-hexgate-dialling-workflow+" <integer> "(" <description> ")"
+    <description> ::= <string>

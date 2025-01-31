@@ -25,7 +25,7 @@ The word "ṣaṭkoṇa" means "six angles" in Sanskrit.  I am using the renderi
 "Satkona" because it is compatible with the ASCII character set, while the
 original Sanskrit phoenetic symbols are not.
 
-This repository is a gathering place for all information related to hexagons,
+This repository is a gathering place for information related to hexagons,
 particularly focusing on code for rendering hexagonal grids in different
 programming languages, and techniques for creating hexagons, as a topological
 basis for use in computer games.  It is graciously acknowledged that in some

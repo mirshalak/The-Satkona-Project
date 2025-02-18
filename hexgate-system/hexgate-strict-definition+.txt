@@ -21,18 +21,22 @@
     stargate network within a proposed computer game, but has since been found to
     have other applications).
     
-    virtual-hexgate-unit-definition(4 cubes).
-    virtual-hexgate-side-length(12.5 units).
-    virtual-hexgate-vertices(6).
-    virtual-hexgate-midpoints(6).
-    virtual-hexgate-register-display-definition+01(present on the front (facing the user) of the
+    hexgate-frame-shape(pointy top hexagon, with the upper isosceles triangles of two lower adjacent hexagons, as lateral supports).
+    hexgate-frame-long-diagonal(8.125 meters).
+    hexgate-frame-constituent-hexagons-shape(flat top).
+    hexgate-frame-constituent-hexagons(13 per side).
+    hexgate-frame-constituent-hexagons-long-diagonal(0.625 meters)
+    hexgate-vertices(6).
+    hexgate-midpoints(6).
+    hexgate-register-display-definition+01(present on the front (facing the user) of the
     hexgate's 6 vertices and 6 midpoints).
-    virtual-hexgate-register-display-definition+02(7 segment LED).
+    hexgate-register-display-definition+02(7 segment LED).
     
     register-definition+01(memory cells for storing address segments).
     register-definition+02(12 registers in total).
     register-definition+03(All registers contain 3 digits).
     register-definition+04(Each digit has a valid range of 0-9).
+    register-definition+05(Hexgate addresses are read from right to left; from register 12 to register 1.  Register 12 contains the smallest set; the specific current object or gate being referenced.  Register 1 references the highest set)    
     
     {
       "registers": [
@@ -53,25 +57,31 @@
     
     complete-address-example(001-098-639-512-096-733-491-511-977-946-059-167).
     
-    virtual-hexgate-dialling-workflow+01(Type identifier register is dialled first, which is always 001 for hexgates.)
-    virtual-hexgate-dialling-workflow+02(Address registers 2-13 are then dialled next).
-    virtual-hexgate-dialling-workflow+03(Event horizon of source hexgate becomes entangled with event horizon of destination hexgate).
-    virtual-hexgate-dialling-workflow+04(Human travellers, AI agents, sufficiently small vehicles, or freight then pass through, depending on context).
+    hexgate-dialling-workflow+01(Type identifier register is dialled first, which is always 001 for hexgates.)
+    hexgate-dialling-workflow+02(Address registers 2-13 are then dialled next).
+    hexgate-dialling-workflow+03(Event horizon of source hexgate becomes entangled with event horizon of destination hexgate).
+    hexgate-dialling-workflow+04(Human travellers, AI agents, sufficiently small vehicles, or freight then pass through, depending on context).
     
     <hexgate> ::= <structure> <registers> <type-identifiers> <workflow>
     
-    <structure> ::= "virtual-hexgate-unit-definition(" <integer> "cubes)" 
-                    "virtual-hexgate-side-length(" <float> "units)" 
-                    "virtual-hexgate-vertices(" <integer> ")" 
-                    "virtual-hexgate-midpoints(" <integer> ")" 
-                    "virtual-hexgate-register-display-definition+01(" <string> ")" 
-                    "virtual-hexgate-register-display-definition+02(" <string> ")"
+    <structure> ::= "hexgate-frame-shape(" <string> ")"
+                    "hexgate-frame-long-diagonal(" <float> " "meters ")" 
+                    "hexgate-frame-constituent-hexagons-shape(" <string> ")"
+                    "hexgate-frame-constituent-hexagons(" <integer> " "per side ")"
+                    "hexgate-frame-constituent-hexagons-long-diagonal(" <float> " "meters ")"
+
+                    "hexgate-side-length(" <float> " "units ")" 
+                    "hexgate-vertices(" <integer> ")" 
+                    "hexgate-midpoints(" <integer> ")" 
+                    "hexgate-register-display-definition+01(" <string> ")" 
+                    "hexgate-register-display-definition+02(" <string> ")"
     
     <registers> ::= "register-definition+01(" <string> ")" 
                     "register-definition+02(" <integer> ")" 
-                    "register-definition+03(All registers contain " <integer> " digits)" 
-                    "register-definition+04(Each digit has a valid range of " <integer> "-" <integer> ")" 
+                    "register-definition+03(" All registers contain " <integer> " digits)" 
+                    "register-definition+04(" Each digit has a valid range of " <integer> "-" <integer> ")"
+                    "register-definition+05(" Hexgate addresses are read from right to left; from register " <integer> " to register " <integer> ".  Register " <integer> " contains the smallest set; the specific current object or gate being referenced.  Register " <integer> " references the highest set)
     
     <workflow> ::= <step> {<step>}
-    <step> ::= "virtual-hexgate-dialling-workflow+" <integer> "(" <description> ")"
+    <step> ::= "hexgate-dialling-workflow+" <integer> "(" <description> ")"
     <description> ::= <string>

@@ -1,0 +1,43 @@
+2.  The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
+
+001:push  (Transmit data to stack memory)
+002:store (Transmit data to register/heap memory)
+003:pop (Receive data from stack memory)   
+004:load (Receive data from register/heap memory)
+005:define-word (This is equivalent to the word compilation pair in FORTH)
+006:execute-word 
+007:add  
+008:subtract
+
+sk8-purpose+01("To permit total reconstruction from the minimal viable initial
+state.").
+
+sk8-purpose+02("To create a semantic framework and execution model, which
+allows the reliable generation of code by artificial intelligence.  It has been
+observed that language models produce much more elegant and reliable code, when
+the parameter stack is used as the central data structure.").
+
+two-stacks("Parameter stack and return stack.").
+parameter-stack-contents("Word parameter data.").
+return-stack-contents("Addresses of 1 or more words to be executed.").
+heap-contents("Definitions and contents of words.").
+parameter-stack("Preferred mechanism for all general-purpose computation.").
+store-and-load-words("Exist solely to support the operation of define-word and execute-word.").
+store-and-load-words("Not to be used otherwise.").
+
+word-addresses("Words are to have Hexgate addresses, following the above 8.").
+
+loop-branch("Looping and branching are to be achieved via define-word,
+execute-word, and the return stack.").
+
+core-invariance("The core SK8 instruction set (001–008) must remain immutable
+and distinct from all higher-level or API-specific word dictionaries. This
+ensures minimal survivable execution and prevents dependency pollution.").
+
+word-tokens("Words consist of individual tokens, which begin and end with the space character: ASCII decimal code 32.")
+word-start("define-word")
+word-second-token("word name")
+word-end("000.").
+word-end-explanation("Within define-word compilation mode, push 000 is not a runtime literal, but a control instruction equivalent to end-define.").
+word-example("define-word dup heap-variable store heap-variable load push 000")
+

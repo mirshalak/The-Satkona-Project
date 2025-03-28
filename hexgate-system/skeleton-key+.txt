@@ -10,7 +10,8 @@ The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 008:subtract
 
 sk8-purpose+01("To permit total reconstruction from the minimal viable initial
-state.").
+state.  Viable is defined by the ability to execute secondary loops, which Brainf*** 
+in particular was incapable of.").
 
 sk8-purpose+02("To create a semantic framework and execution model, which
 allows the reliable generation of code by artificial intelligence.  It has been
@@ -18,17 +19,28 @@ observed that language models produce much more elegant and reliable code, when
 the parameter stack is used as the central data structure.").
 
 two-stacks("Parameter stack and return stack.").
+
 parameter-stack-contents("Word parameter data.").
+
 return-stack-contents("Addresses of 1 or more words to be executed.").
+
 heap-contents("Definitions and contents of words.").
+
 parameter-stack("Preferred mechanism for all general-purpose computation.").
+
 store-and-load-words("Exist solely to support the operation of define-word and execute-word.").
+
 store-and-load-words("Not to be used otherwise.").
 
 word-addresses("Words are to have Hexgate addresses, following the above 8.").
 
-loop-branch("Looping and branching are to be achieved via define-word,
-execute-word, and the return stack.").
+no-explicit-branching("Hexgate addressing gives everything within a given
+physical or virtual environment an address, and the address of every object, is
+also the address of the relevant word for interacting with it within the
+system.  Branching can be achieved by assigning a relevant address to every
+point within a system.  For a thermostat as one example, every word numbered
+between 1 and 100 within the current dictionary, could represent the
+corresponding temperature.").
 
 core-invariance("The core SK8 instruction set (001–008) must remain immutable
 and distinct from all higher-level or API-specific word dictionaries. This
@@ -38,7 +50,6 @@ word-tokens("Words consist of individual tokens, which begin and end with the sp
 word-start("define-word")
 word-second-token("word name")
 word-end("000.").
-word-end-explanation("Within define-word compilation mode, push 000 is not a runtime literal, but a control instruction equivalent to end-define.").
 word-example("define-word dup heap-variable store heap-variable load push 000")
 
 ```javascript

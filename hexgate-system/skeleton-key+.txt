@@ -1,3 +1,5 @@
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
 The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 
 001:push  (Transmit data to stack memory)
@@ -10,8 +12,8 @@ The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 008:subtract
 
 sk8-purpose+01("To permit total reconstruction from the minimal viable initial
-state.  Viable is defined by the ability to execute secondary loops, which Brainf*** 
-in particular was incapable of.").
+state.  Viable is defined by the ability to execute secondary loops, which 
+Brainf*** in particular was incapable of.").
 
 sk8-purpose+02("To create a semantic framework and execution model, which
 allows the reliable generation of code by artificial intelligence.  It has been
@@ -28,11 +30,22 @@ heap-contents("Definitions and contents of words.").
 
 parameter-stack("Preferred mechanism for all general-purpose computation.").
 
-store-and-load-words("Exist solely to support the operation of define-word and execute-word.").
+store-and-load-words("Exist solely to support the operation of define-word 
+and execute-word.").
 
 store-and-load-words("Not to be used otherwise.").
 
-word-addresses("Words are to have Hexgate addresses, following the above 8.").
+word-addresses("Words are to have Hexgate addresses, following the above 
+8.").
+
+ephemeral-numbers+01("Any single-digit or otherwise non-NNN token that lacks 
+two leading zeroes is to be considered ephemeral. Such words are temporary 
+constructs used for dynamic control flow or intermediate computation and are 
+not to be treated as routable Hexgate addresses.")
+
+ephemeral-numbers+02(001 is a formal Hexgate address.  1 (without leading 
+zeroes) is an ephemeral lexical token.  They are not equal semantically or 
+syntactically.).
 
 no-explicit-branching("Hexgate addressing gives everything within a given
 physical or virtual environment an address, and the address of every object, is

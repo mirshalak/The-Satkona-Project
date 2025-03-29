@@ -1,0 +1,52 @@
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+
+The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
+
+This system is designed to be used primarily by language models.  Complaints
+about its' inhospitality to human cognition will be discarded as irrelevant.  If
+someone actively desires inconsistent, poorly defined syntax, then it is far
+easier to find than its' opposite.
+
+<push>		::= "push" <integer> /* push to stack */
+<pop>		::= "pop" /* pop from stack */
+<store>		::= "store" /* move stack value to heap */
+<load>		::= "load" /* move heap value to stack */
+<define-word>	::= "define-word" <word-name> <word-body> "end-define"
+<execute-word>	::= "execute-word"
+<add> 		::= "add"
+<subtract> 	::= "subtract"
+
+<word-name> ::= <identifier>
+<word-body> ::= (<word-token>)*
+
+<word-token> ::= <push> | <pop> | <store> | <load> | <add> | <subtract> | 
+<execute-word> | <define-word>
+
+<identifier> ::= /* alphanumeric ASCII excluding whitespace and control chars */
+<integer> ::= /* sequence of digits, decimal base */
+
+Any physical or virtual machine which is capable of running the above 8 core 
+functions, is defined as a ***host system,*** in SK8's nomenclature.  SK8 relies
+on the host for the implementation of everything that is not explicitly defined
+here, but because there is enough here for this system to be rebuilt within any
+programming language that is known to exist, SK8 is also not exclusively 
+dependent upon any language or system, either.
+
+There must also be a distinction made between the core, which this file defines,
+and secondary/extension dictionaries.  Anything defined outside this file is a
+secondary dictionary, and is considered expendable for the purposes of rebuilding
+the system from a minimal initial state.  
+
+There are two stacks, a parameter and return stack.  There is also heap memory for 
+the storage of words.
+
+Words consist of tokens, bounded by the space character. (ASCII code 32)
+
+Word format is as follows:-
+
+define-word <single register, numerical Hexgate address> <word name> <word body>
+end-define
+
+Example:-
+
+define-word 009 dup heap-variable store heap-variable load end-define

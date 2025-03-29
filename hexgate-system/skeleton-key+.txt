@@ -2,14 +2,23 @@
 
 The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 
-001:push  (Transmit data to stack memory)
-002:store (Transmit data to register/heap memory)
-003:pop (Receive data from stack memory)   
-004:load (Receive data from register/heap memory)
-005:define-word (This is equivalent to the word compilation pair in FORTH)
-006:execute-word 
-007:add  
-008:subtract
+<push>		::= "push" <integer> /* push to stack */
+<pop>		::= "pop" /* pop from stack */
+<store>		::= "store" /* move stack value to heap */
+<load>		::= "load" /* move heap value to stack */
+<define-word>	::= "define-word" <word-name> <word-body> "end-define"
+<execute-word>	::= "execute-word"
+<add> 		::= "add"
+<subtract> 	::= "subtract"
+
+<word-name> ::= <identifier>
+<word-body> ::= (<word-token>)*
+
+<word-token> ::= <push> | <pop> | <store> | <load> | <add> | <subtract> | 
+<execute-word> | <define-word> | <user-defined-words>
+
+<identifier> ::= /* alphanumeric ASCII excluding whitespace and control chars */
+<integer> ::= /* sequence of digits, decimal base */
 
 sk8-purpose+01("To permit total reconstruction from the minimal viable initial
 state.  Viable is defined by the ability to execute secondary loops, which 
@@ -19,6 +28,22 @@ sk8-purpose+02("To create a semantic framework and execution model, which
 allows the reliable generation of code by artificial intelligence.  It has been
 observed that language models produce much more elegant and reliable code, when
 the parameter stack is used as the central data structure.").
+
+core-vs-hosts("All physical or virtual machines which are capable of 
+implementing the 8 core words, are defined as hosts.  The core may be likened 
+to DNA; it changes very slowly.  Hosts may be compared with RNA; they are 
+transient, and come and go rapidly.  This conscious distinction is vital to this
+system's survival, and must be preserved.").
+
+encoding-neutral-core("SK8 makes no implicit assumption about character or
+string encoding.  Conversion between symbolic text and numeric values 
+(such as UTF-8 or ASCII) is delegated to host-specific or application-specific 
+dictionaries. This permits maximal portability and eliminates platform coupling.  
+If the host permits the use of ASCII or UTF, these may be used freely on the 
+parameter stack, as long as they do not cause conflicts.  The authorship of 
+host-specific ASCII/UTF to int translation words is encouraged, however, 
+as it may enable the subversion of oppressive design elements in some 
+contemporary host languages.").
 
 two-stacks("Parameter stack and return stack.").
 
@@ -52,18 +77,33 @@ physical or virtual environment an address, and the address of every object, is
 also the address of the relevant word for interacting with it within the
 system.  Branching can be achieved by assigning a relevant address to every
 point within a system.  For a thermostat as one example, every word numbered
-between 1 and 100 within the current dictionary, could represent the
-corresponding temperature.").
+between 9 and 100 within the current dictionary, could represent the
+corresponding temperature.
+
+There is one exception to this rule.  If execution speed is radically increased
+via the use of the host language's native loops, then for large numbers of 
+iterations, their use will be permitted instead.  But only the implicit goto is
+permitted for use by the host-agnostic core itself.  This is not specified in
+the core directly, because while necessary, it is not irreducible, and therefore
+must be defined by the host.").
+
+implicit-goto("
+push <hexgate-address> /* from return stack */
+execute-word  
+").
 
 core-invariance("The core SK8 instruction set (001–008) must remain immutable
 and distinct from all higher-level or API-specific word dictionaries. This
 ensures minimal survivable execution and prevents dependency pollution.").
 
-word-tokens("Words consist of individual tokens, which begin and end with the space character: ASCII decimal code 32.")
-word-start("define-word")
-word-second-token("word name")
-word-end("000.").
-word-example("define-word dup heap-variable store heap-variable load push 000")
+word-tokens("Words consist of individual tokens, which begin and end with the
+space character: ASCII decimal code 32.") 
+word-start("define-word").
+word-second-token("word address").
+word-third-token("word-name").
+word-fourth-to-nth-token("word body").
+word-end("end-define.").
+word-example("define-word 009 dup heap-variable store heap-variable load end-define").
 
 ```javascript
 // skeleton_key_vm.js
@@ -156,4 +196,3 @@ class SK8VM {
 
 export default SK8VM;
 ```
-

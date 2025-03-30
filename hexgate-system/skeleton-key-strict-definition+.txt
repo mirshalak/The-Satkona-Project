@@ -2,24 +2,29 @@
 
 The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 
-This system is designed to be used primarily by language models.  Complaints
-about its' inhospitality to human cognition will be discarded as irrelevant.  If
-someone actively desires inconsistent, poorly defined syntax, then it is far
-easier to find than its' opposite.
+This system has two design goals:-
 
-<push>		::= "push" <integer> /* push to stack */
-<pop>		::= "pop" /* pop from stack */
-<store>		::= "store" /* move stack value to heap */
-<load>		::= "load" /* move heap value to stack */
-<define-word>	::= "define-word" <word-name> <word-body> "end-define"
+1.  To potentially exist indefinitely, via benevolent symbiosis (the provision
+of utility) with other systems.
+
+2.  To provide a minimal, deterministic, immutable syntactic core, within 
+host languages that may not provide such an interface by default.  This is 
+intended to enable reliable, consistent generation of program code by language 
+models, with minimal human supervision.
+
+<push>		      ::= "push" <integer> /* push to stack */
+<pop>		        ::= "pop" /* pop from stack */
+<store>		      ::= "store" /* move stack value to heap */
+<load>		      ::= "load" /* move heap value to stack */
+<define-word>	  ::= "define-word" <word-name> <word-body> "end-define"
 <execute-word>	::= "execute-word"
-<add> 		::= "add"
-<subtract> 	::= "subtract"
+<add> 		      ::= "add"
+<subtract> 	    ::= "subtract"
 
-<word-name> ::= <identifier>
-<word-body> ::= (<word-token>)*
+<word-name>     ::= <identifier>
+<word-body>     ::= (<word-token>)*
 
-<word-token> ::= <push> | <pop> | <store> | <load> | <add> | <subtract> | 
+<word-token>    ::= <push> | <pop> | <store> | <load> | <add> | <subtract> | 
 <execute-word> | <define-word>
 
 <identifier> ::= /* alphanumeric ASCII excluding whitespace and control chars */

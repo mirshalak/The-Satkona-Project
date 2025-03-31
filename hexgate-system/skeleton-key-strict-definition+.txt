@@ -16,9 +16,13 @@ SK13:The Skeleton Key.
 012:int-to-char
 013:execute-word
 
-This system is not intended to be a Turing tarpit; but it ***is*** meant to be 
-reflective of the principle that minimalism is conducive to survivability.  The 
-less mass something has, the more difficult it is to stop.
+This system is descended from FORTH, and is therefore meant to implement 
+indirect threading, with no explicit branching in the core. It is not intended 
+to be a Turing tarpit; but it ***is*** meant to be reflective of the principle 
+that minimalism is conducive to survivability.  The less mass something has, 
+the more difficult it is to stop.  Language models are permitted to use 
+whatever brnaching constructs are present within the host language, however; 
+whether assembly or whatever else.
 
 3 digit addresses are necessary to maintain length consistency with globally 
 facing Hexgate addresses; although host-specific conversion should be written 

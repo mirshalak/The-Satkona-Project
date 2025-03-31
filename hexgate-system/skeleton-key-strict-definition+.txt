@@ -16,6 +16,10 @@ SK13:The Skeleton Key.
 012:int-to-char
 013:execute-word
 
+This system is not intended to be a Turing tarpit; but it ***is*** meant to be 
+reflective of the principle that minimalism is conducive to survivability.  The 
+less mass something has, the more difficult it is to stop.
+
 13 is the side length of the Hexgate itself.  2 vertices, 1 midpoint, 5 units
 on each side.  5 also has a center, making this pattern fractal.
 

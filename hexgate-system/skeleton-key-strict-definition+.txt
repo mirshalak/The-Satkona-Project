@@ -17,21 +17,10 @@ SK13:The Skeleton Key.
 013:execute-word
 
 This system is descended from FORTH, and is therefore meant to implement 
-indirect threading, with no explicit branching in the core. It is not intended 
-to be a Turing tarpit; but it ***is*** meant to be reflective of the principle 
-that minimalism is conducive to survivability.  The less mass something has, 
-the more difficult it is to stop.  Language models are permitted to use 
-whatever branching constructs are present within the host language, however; 
-whether assembly or whatever else.
+indirect threading, with no explicit branching in the core.
 
 3 digit addresses are necessary to maintain length consistency with globally 
-facing Hexgate addresses; although host-specific conversion should be written 
-to strip leading zeroes for internal computation, thus allowing branching via 
-arithmetic, and re-add them when necessary.  This is only an issue for words 
-below 100 anyway.
-
-13 is the side length of the Hexgate itself.  2 vertices, 1 midpoint, 5 units
-on each side.  5 also has a center, making this pattern fractal.
+facing Hexgate addresses.
 
 There are two stacks, a parameter and return stack.  There is also heap memory for 
 the storage of words. Stack and heap implementation, and context shifting between 
@@ -49,11 +38,10 @@ end-define
 
 Example:-
 
-define-word 
-009 
-dup 
-heap-variable 
-store 
-heap-variable 
-load 
-end-define
+007 
+014
+foo
+001 48
+001 48
+009
+008

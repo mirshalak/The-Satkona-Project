@@ -16,10 +16,7 @@ SK13:The Skeleton Key.
 012:int-to-char
 013:execute-word
 
-This system is descended from FORTH, and is therefore meant to implement 
-indirect threading, with no explicit branching in the core.
-
-3 digit addresses are necessary to maintain length consistency with globally 
+3 digit word addresses are necessary to maintain length consistency with globally 
 facing Hexgate addresses.
 
 There are two stacks, a parameter and return stack.  There is also heap memory for 

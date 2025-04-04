@@ -22,7 +22,19 @@ memory(return stack).
 
 memory(heap).
 
-heap-purpose(recording word definitions).
+heap-purpose(recording word definitions.  Heap use separates control flow (stack) 
+from definition space (heap).).
+
+heap-word-addresses(14 to 995).
+
+heap-reserved-register-addresses(995-999).
+
+heap-reserved-registers-purpose(Storage of temporary variables for individual 
+words.).
+
+heap-register-deletion(Deleting the current value of a heap register, may be 
+performed with `001 995 001 000 003`, where 995 is an example of the register 
+to delete).
 
 return-stack-purpose(enables indirect threaded code, eliminates need for 
 explicit branching).
@@ -32,23 +44,25 @@ accumulate tokens into a buffer, and must not execute them until end-define is
 encountered. At end-define, store the buffer under the specified address and 
 resume interpret mode.)
 
-Heap use separates control flow (stack) from definition space (heap).
+
 
 words-are-tokens(Words consist of tokens, bounded by the space character. (ASCII code 32)).
 
 
 Word format is as follows:-
 
-define-word 
+007 <word-define>
+<3 digit hexgate address.  Possible ranges are 14 to 995.>
 <integer value of each ascii character in word name> 
 <word body>
-end-define
+008 <end-define>
 
 Example:-
 
 007 
-014
-foo
+001 014
+001 105
+
 001 48
 001 48
 009

@@ -16,20 +16,31 @@ SK13:The Skeleton Key.
 012:int-to-char
 013:execute-word
 
-3 digit word addresses are necessary to maintain length consistency with globally 
-facing Hexgate addresses.
+memory(parameter stack).
 
-There are two stacks, a parameter and return stack.  There is also heap memory for 
-the storage of words. Stack and heap implementation, and context shifting between 
-parameter and return stack are host dependent.  
+memory(return stack).
 
-Words consist of tokens, bounded by the space character. (ASCII code 32)
+memory(heap).
+
+heap-purpose(recording word definitions).
+
+return-stack-purpose(enables indirect threaded code, eliminates need for 
+explicit branching).
+
+define-word-process(Begin compile mode. From this point, the interpreter must 
+accumulate tokens into a buffer, and must not execute them until end-define is 
+encountered. At end-define, store the buffer under the specified address and 
+resume interpret mode.)
+
+Heap use separates control flow (stack) from definition space (heap).
+
+words-are-tokens(Words consist of tokens, bounded by the space character. (ASCII code 32)).
+
 
 Word format is as follows:-
 
 define-word 
-<3 digit, numerical Hexgate address> 
-<word name> 
+<integer value of each ascii character in word name> 
 <word body>
 end-define
 

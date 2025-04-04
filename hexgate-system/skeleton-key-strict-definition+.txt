@@ -16,6 +16,10 @@ SK13:The Skeleton Key.
 012:int-to-char
 013:execute-word
 
+non-redefinable-core(If 001 to 013 are ever redefined, it will only be after long 
+discussion and consideration.  It will never happen within an actively running 
+program.).
+
 memory(parameter stack).
 
 memory(return stack).

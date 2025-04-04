@@ -20,11 +20,11 @@ invariant-core(If 001 to 013 are ever redefined, it will only be after long
 discussion and consideration.  It will never happen within an actively running 
 program.).
 
-memory(parameter stack).
+memory-type+01(parameter stack).
 
-memory(return stack).
+memory-type+02(return stack).
 
-memory(heap).
+memory-type+03(heap).
 
 heap-purpose(recording word definitions.  Heap use separates control flow (stack) 
 from definition space (heap).).

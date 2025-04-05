@@ -48,26 +48,4 @@ accumulate tokens into a buffer, and must not execute them until end-define is
 encountered. At end-define, store the buffer under the specified address and 
 resume interpret mode.)
 
-
-
 words-are-tokens(Words consist of tokens, bounded by the space character. (ASCII code 32)).
-
-
-Word format is as follows:-
-
-007 <word-define>
-<3 digit hexgate address.  Possible ranges are 14 to 995.>
-<integer value of each ascii character in word name> 
-<word body>
-008 <end-define>
-
-Example:-
-
-007 
-001 014
-001 105
-
-001 48
-001 48
-009
-008

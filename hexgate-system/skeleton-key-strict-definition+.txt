@@ -11,10 +11,7 @@ The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 007:add  
 008:subtract
 
-sk8-purpose+01("To permit total reconstruction from the minimal viable initial
-state.").
-
-sk8-purpose+02("To create a semantic framework and execution model, which
+sk8-purpose("To create a semantic framework and execution model, which
 allows the reliable generation of code by artificial intelligence.  It has been
 observed that language models produce much more elegant and reliable code, when
 the parameter stack is used as the central data structure.").

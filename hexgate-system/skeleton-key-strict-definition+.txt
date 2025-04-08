@@ -1,51 +1,143 @@
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-SK13:The Skeleton Key.
+The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 
-001:push
-002:pop
-003:store
-004:load
-005:parameter-to-return
-006:return-to-parameter
-007:define-word
-008:end-define
-009:add
-010:subtract
-011:char-to-int
-012:int-to-char
-013:execute-word
+001:push  (Transmit data to stack memory)
+002:store (Transmit data to register/heap memory)
+003:pop (Receive data from stack memory)   
+004:load (Receive data from register/heap memory)
+005:define-word (This is equivalent to the word compilation pair in FORTH)
+006:execute-word 
+007:add  
+008:subtract
 
-invariant-core(If 001 to 013 are ever redefined, it will only be after long 
-discussion and consideration.  It will never happen within an actively running 
-program.).
+sk8-purpose+01("To permit total reconstruction from the minimal viable initial
+state.").
 
-memory-type+01(parameter stack).
+sk8-purpose+02("To create a semantic framework and execution model, which
+allows the reliable generation of code by artificial intelligence.  It has been
+observed that language models produce much more elegant and reliable code, when
+the parameter stack is used as the central data structure.").
 
-memory-type+02(return stack).
+two-stacks("Parameter stack and return stack.").
+parameter-stack-contents("Word parameter data.").
+return-stack-contents("Addresses of 1 or more words to be executed.").
+heap-contents("Definitions and contents of words.").
+parameter-stack("Preferred mechanism for all general-purpose computation.").
+store-and-load-words("Exist solely to support the operation of define-word and execute-word.").
+store-and-load-words("Not to be used otherwise.").
 
-memory-type+03(heap).
+word-addresses("Words are to have Hexgate addresses, following the above 8.").
 
-heap-purpose(recording word definitions.  Heap use separates control flow (stack) 
-from definition space (heap).).
+loop-branch("Looping and branching are to be achieved via define-word,
+execute-word, and the return stack.").
 
-heap-word-addresses(14 to 995).
+core-invariance("The core SK8 instruction set (001–008) must remain immutable
+and distinct from all higher-level or API-specific word dictionaries. This
+ensures minimal survivable execution and prevents dependency pollution.").
 
-heap-reserved-register-addresses(995-999).
+word-tokens("Words consist of individual tokens, which begin and end with the space character: ASCII decimal code 32.")
+word-start("define-word")
+word-second-token("word address")
+word-third-to-last-token("word body")
+word-end("end-define")
+word-example("define-word 009 001 42 001 42 007 end-define")
 
-heap-reserved-registers-purpose(Storage of temporary variables for individual 
-words.).
+// sk8_core.js
 
-heap-register-deletion(Deleting the current value of a heap register, may be 
-performed with `001 995 001 000 003`, where 995 is an example of the register 
-to delete).
+export class SK8VM {
+  constructor() {
+    this.parameterStack = [];
+    this.returnStack = [];
+    this.heap = new Map();
+    this.registers = {};
+    this.hostBindings = {};
+  }
 
-return-stack-purpose(enables indirect threaded code, eliminates need for 
-explicit branching).
+  defineWord({ address, body }) {
+    this.heap.set(String(address), body);
+  }
 
-define-word-process(Begin compile mode. From this point, the interpreter must 
-accumulate tokens into a buffer, and must not execute them until end-define is 
-encountered. At end-define, store the buffer under the specified address and 
-resume interpret mode.)
+  call(address) {
+    this.returnStack.push(String(address));
+  }
 
-words-are-tokens(Words consist of tokens, bounded by the space character. (ASCII code 32)).
+  executeNextWord() {
+    if (this.returnStack.length === 0) {
+      throw new Error("Return stack is empty.");
+    }
+
+    const addr = this.returnStack.pop();
+    const word = this.heap.get(String(addr));
+
+    if (!word) {
+      throw new Error(`No word defined at address ${addr}`);
+    }
+
+    for (const opcode of word) {
+      this.executeInstruction(opcode);
+    }
+  }
+
+  executeInstruction(opcode) {
+    const instr = opcode[0];
+    const arg = opcode[1];
+
+    switch (instr) {
+      case 1: // push
+        this.parameterStack.push(arg);
+        break;
+      case 2: // store
+        this.registers[arg] = this.parameterStack.pop();
+        break;
+      case 3: // pop
+        this.parameterStack.pop();
+        break;
+      case 4: // load
+        this.parameterStack.push(this.registers[arg]);
+        break;
+      case 5: // define-word
+        break; // handled externally
+      case 6: // execute-word
+        this.executeNextWord();
+        break;
+      case 7: // add
+        {
+          const b = this.parameterStack.pop();
+          const a = this.parameterStack.pop();
+          this.parameterStack.push(a + b);
+        }
+        break;
+      case 8: // subtract
+        {
+          const b = this.parameterStack.pop();
+          const a = this.parameterStack.pop();
+          this.parameterStack.push(a - b);
+        }
+        break;
+      case 9: // host-bound
+        this.hostCall(arg);
+        break;
+      default:
+        throw new Error(`Unknown opcode: ${instr}`);
+    }
+  }
+
+  bindHostFunction(name, fn) {
+    this.hostBindings[name] = fn;
+  }
+
+  hostCall(name) {
+    const fn = this.hostBindings[name];
+    if (!fn) throw new Error(`Host function not found: ${name}`);
+    fn(this);
+  }
+
+  dumpStacks() {
+    return {
+      parameter: [...this.parameterStack],
+      return: [...this.returnStack],
+      heap: [...this.heap.entries()]
+    };
+  }
+}

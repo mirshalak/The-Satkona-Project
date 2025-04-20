@@ -34,54 +34,29 @@
     
     register-definition+01(memory cells for storing address segments).
     register-definition+02(12 registers in total).
-    register-definition+03(All registers contain 3 digits).
-    register-definition+04(Each digit has a valid range of 0-9).
-    register-definition+05(Hexgate addresses are read from right to left; from register 12 to register 1.  Register 12 contains the smallest set; the specific current object or gate being referenced.  Register 1 references the highest set)    
-    
+    register-definition+03(All registers contain 4 decimal digits).
+    register-definition+04(Each digit has a valid range of 0-9, for consistency).
+    register-definition+05(Each register stores a decimal value from 0–1023, corresponding to a 10-bit range).
+    register-definition+06(Hexgate addresses are read from right to left; from register 12 to register 1.  Register 12 contains the 
+    smallest set; the specific current object or gate being referenced.  Register 1 references the highest set)    
+    register-definition+07(Even in situations where only a single register is written, the full 4 digits must always be present, 
+to preserve 10 bit consistency).
+
     {
       "registers": [
-        {"register": 1, "value": "001"},
-        {"register": 2, "value": "098"},
-        {"register": 3, "value": "639"},
-        {"register": 4, "value": "513"},
-        {"register": 5, "value": "096"},
-        {"register": 6, "value": "733"},
-        {"register": 7, "value": "491"},
-        {"register": 8, "value": "511"},
-        {"register": 9, "value": "977"},
-        {"register": 10, "value": "946"},
-        {"register": 11, "value": "059"},
-        {"register": 12, "value": "167"},
+        {"register": 1, "value": "0001"},
+        {"register": 2, "value": "0098"},
+        {"register": 3, "value": "0639"},
+        {"register": 4, "value": "0513"},
+        {"register": 5, "value": "0096"},
+        {"register": 6, "value": "0733"},
+        {"register": 7, "value": "0491"},
+        {"register": 8, "value": "0511"},
+        {"register": 9, "value": "0977"},
+        {"register": 10, "value": "0946"},
+        {"register": 11, "value": "0059"},
+        {"register": 12, "value": "1023"},
       ]
     }
     
-    complete-address-example(001-098-639-512-096-733-491-511-977-946-059-167).
-    
-    hexgate-dialling-workflow+01(Type identifier register is dialled first, which is always 001 for hexgates.)
-    hexgate-dialling-workflow+02(Address registers 2-13 are then dialled next).
-    hexgate-dialling-workflow+03(Event horizon of source hexgate becomes entangled with event horizon of destination hexgate).
-    hexgate-dialling-workflow+04(Human travellers, AI agents, sufficiently small vehicles, or freight then pass through, depending on context).
-    
-    <hexgate> ::= <structure> <registers> <type-identifiers> <workflow>
-    
-    <structure> ::= "hexgate-frame-shape(" <string> ")"
-                    "hexgate-frame-long-diagonal(" <float> " "meters ")" 
-                    "hexgate-frame-constituent-hexagons-shape(" <string> ")"
-                    "hexgate-frame-constituent-hexagons(" <integer> " "per side ")"
-                    "hexgate-frame-constituent-hexagons-long-diagonal(" <float> " "meters ")"
-
-                    "hexgate-side-length(" <float> " "units ")" 
-                    "hexgate-vertices(" <integer> ")" 
-                    "hexgate-midpoints(" <integer> ")" 
-                    "hexgate-register-display-definition+01(" <string> ")" 
-                    "hexgate-register-display-definition+02(" <string> ")"
-    
-    <registers> ::= "register-definition+01(" <string> ")" 
-                    "register-definition+02(" <integer> ")" 
-                    "register-definition+03(" All registers contain " <integer> " digits)" 
-                    "register-definition+04(" Each digit has a valid range of " <integer> "-" <integer> ")"
-                    "register-definition+05(" Hexgate addresses are read from right to left; from register " <integer> " to register " <integer> ".  Register " <integer> " contains the smallest set; the specific current object or gate being referenced.  Register " <integer> " references the highest set)
-    
-    <workflow> ::= <step> {<step>}
-    <step> ::= "hexgate-dialling-workflow+" <integer> "(" <description> ")"
-    <description> ::= <string>
+    complete-address-example(0001-0098-0639-0512-0096-0733-0491-0511-0977-0946-0059-1023).

@@ -2,14 +2,14 @@
 
 The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 
-001:push  (Transmit data to stack memory)
-002:store (Transmit data to register/heap memory)
-003:pop (Receive data from stack memory)   
-004:load (Receive data from register/heap memory)
-005:define-word (This is equivalent to the word compilation pair in FORTH)
-006:execute-word 
-007:add  
-008:subtract
+0001:push  (Transmit data to stack memory)
+0002:store (Transmit data to register/heap memory)
+0003:pop (Receive data from stack memory)   
+0004:load (Receive data from register/heap memory)
+0005:define-word (This is equivalent to the word compilation pair in FORTH)
+0006:execute-word 
+0007:add  
+0008:subtract
 
 sk8-purpose("To create a semantic framework and execution model, which
 allows the reliable generation of code by artificial intelligence.  It has been
@@ -38,7 +38,7 @@ word-start("define-word")
 word-second-token("word address")
 word-third-to-last-token("word body")
 word-end("end-define")
-word-example("define-word 009 001 42 001 42 007 end-define")
+word-example("define-word 0009 0001 42 0001 42 0007 end-define")
 
 // sk8_core.js
 

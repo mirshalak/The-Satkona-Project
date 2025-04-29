@@ -1,62 +1,70 @@
-    # ISC License
-    
-    # Copyright (c) 2024 James Osborn
-    
-    # Permission to use, copy, modify, and/or distribute this software for any purpose 
-    # with or without fee is hereby granted, provided that the above copyright notice 
-    # and this permission notice appear in all copies.
-    
-    # THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH 
-    # REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY 
-    # AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, 
-    # INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM 
-    # LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE 
-    # OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR 
-    # PERFORMANCE OF THIS SOFTWARE.
-    
-    ## Hexgate System
-    
-    subject(hexgate addressing system).
-    definition(Extensible addressing system.  This originated for use with a
-    stargate network within a proposed computer game, but has since been found to
-    have other applications).
-    
-    hexgate-frame-shape(pointy top hexagon, with the upper isosceles triangles of two lower adjacent hexagons, as lateral supports).
-    hexgate-frame-long-diagonal(8.125 meters).
-    hexgate-frame-constituent-hexagons-shape(flat top).
-    hexgate-frame-constituent-hexagons(13 per side).
-    hexgate-frame-constituent-hexagons-long-diagonal(0.625 meters)
-    hexgate-vertices(6).
-    hexgate-midpoints(6).
-    hexgate-register-display-definition+01(present on the front (facing the user) of the
-    hexgate's 6 vertices and 6 midpoints).
-    hexgate-register-display-definition+02(7 segment LED).
-    
-    register-definition+01(memory cells for storing address segments).
-    register-definition+02(12 registers in total).
-    register-definition+03(All registers contain 4 decimal digits).
-    register-definition+04(Each digit has a valid range of 0-9, for consistency).
-    register-definition+05(Each register stores a decimal value from 0–1023, corresponding to a 10-bit range).
-    register-definition+06(Hexgate addresses are read from right to left; from register 12 to register 1.  Register 12 contains the 
-    smallest set; the specific current object or gate being referenced.  Register 1 references the highest set)    
-    register-definition+07(Even in situations where only a single register is written, the full 4 digits must always be present, 
-to preserve 10 bit consistency).
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+# ISC License
 
-    {
-      "registers": [
-        {"register": 1, "value": "0001"},
-        {"register": 2, "value": "0098"},
-        {"register": 3, "value": "0639"},
-        {"register": 4, "value": "0513"},
-        {"register": 5, "value": "0096"},
-        {"register": 6, "value": "0733"},
-        {"register": 7, "value": "0491"},
-        {"register": 8, "value": "0511"},
-        {"register": 9, "value": "0977"},
-        {"register": 10, "value": "0946"},
-        {"register": 11, "value": "0059"},
-        {"register": 12, "value": "1023"},
-      ]
-    }
-    
-    complete-address-example(0001-0098-0639-0512-0096-0733-0491-0511-0977-0946-0059-1023).
+# Copyright (c) 2024 James Osborn
+
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+# REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+# AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+# INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+# LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+# OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+# PERFORMANCE OF THIS SOFTWARE.
+
+## Hexgate System
+
+subject(hexgate addressing system).
+
+definition(Extensible addressing system.  This originated for use with a
+stargate network within a proposed computer game, but has since been found to
+have other applications).
+
+warning(This document describes the most foundational element of our entire 
+system.  It is that on which everything else is based.  Changes to it 
+should therefore only be made *very* rarely, and with *extreme* care).
+
+hexgate-frame-shape(pointy top hexagon, with the upper isosceles triangles of
+two lower adjacent hexagons, as lateral supports).
+
+hexgate-frame-long-diagonal(8.125 meters).
+hexgate-frame-constituent-hexagons-shape(flat top).
+hexgate-frame-constituent-hexagons(13 per side).
+hexgate-frame-constituent-hexagons-long-diagonal(0.625 meters)
+hexgate-vertices(6).
+hexgate-midpoints(6).
+hexgate-register-display-definition+01(present on the front (facing the user)
+of the hexgate's 6 vertices and 6 midpoints).
+hexgate-register-display-definition+02(7 segment LED).
+
+register-definition+01(memory cells for storing address segments).
+register-definition+02(12 registers in total).
+register-definition+03(All registers contain 3 digits).
+register-definition+04(Each digit has a valid range of 0-9).
+register-definition+05(Hexgate addresses are read from right to left; from
+register 12 to register 1.  Register 12 contains the smallest set; the specific
+current object or gate being referenced.  Register 1 references the highest
+set)    
+
+
+{
+  "registers": [
+    {"register": 1, "value": "001"},
+    {"register": 2, "value": "098"},
+    {"register": 3, "value": "639"},
+    {"register": 4, "value": "513"},
+    {"register": 5, "value": "096"},
+    {"register": 6, "value": "733"},
+    {"register": 7, "value": "491"},
+    {"register": 8, "value": "511"},
+    {"register": 9, "value": "977"},
+    {"register": 10, "value": "946"},
+    {"register": 11, "value": "059"},
+    {"register": 12, "value": "167"},
+  ]
+}
+
+complete-address-example(001-098-639-512-096-733-491-511-977-946-059-167).

@@ -1,39 +1,43 @@
-# Hexgate virtual machine
+LAYER 1 — HEXGATE ADDRESS SPACE
+Purpose: universal, fixed topology
+12 registers of 3 decimal digits each (0-9), giving 10^36 unique addresses; 
+every entity can be placed in a single global lattice.
 
-There are three elements.
+During normal operation all addresses shall contain 000 in registers R1–R9. 
+Packets breaching this invariant MUST be discarded unless processed by a 
+component explicitly authorised for inter-realm routing.
 
-1.  The Hexgate address subsystem itself, defined in the Hexgate strict definition.
+LAYER 2 — SKELETON KEY 8 (SK8) PRIMITIVES
+Purpose: minimal permanent instruction set
 
-Hexgate addressing is the bedrock of this entire system.  An address space with
-10^36 possible permutations, means that **everything** can have an address,
-within a single global address space.  This in turn means that everything can
-potentially be interconnected, and everything can be abstracted in any manner
-imaginable.
+001(+, "Addition").
+002(-, "Subtraction").
+003(., "Print the top of the stack").   
+004(r>, "Push the top of the parameter stack, to the top of the return stack").
+005(r<, (Push the top of the return stack, to the top of the parameter stack").
+006(dup, "Duplicate the top of the parameter stack"). 
+007(r@, "Print cell count of return stack").
+008(:, "Compile new words from currently existing words").
 
-2.  The Skeleton Key, or 8 core functions.
+LAYER 3 — HEX FILE SYSTEM
+Purpose: fractal storage and navigation
+Core points: each partition has 998 top-level directories numbered 001–999, each acting as the central vertex of a hexagon. Each top-level directory contains six subdirectories (the lateral vertices) and two control files:
+• adjacency-manifest — lists files in its six subdirectories
+• adjacency-address — stores that directory’s Hexgate address
 
-001:push  (Transmit data to stack memory)
-002:store (Transmit data to register/heap memory)
-003:pop (Receive data from stack memory)   
-004:load (Receive data from register/heap memory)
-005:define-word (This is equivalent to the word compilation pair in FORTH)
-006:execute-word 
-007:add  
-008:subtract
+RULE R — RECURSIVE HEX GROWTH
+Begin with one hexagon; attach a new hex to every free edge, then repeat. This produces an endlessly extensible, self-similar lattice that underpins both storage layout and spatial/virtual planning.
 
-3.  The file system.
+PERMANENT VS. TEMPORARY
+Invariant cores (permanent): Hexgate addressing, SK8 primitives, Rule R geometry, and their axioms—analogous to DNA.
+Everything else (temporary): user programs and social/economic layers—free to change or be discarded but must interoperate with the cores.
 
-top-level-directories("Every partition has 1023 top level subdirectories, from
-001 to 1023.  These top level directories are viewed metaphorically as each
-being the central 7th vertex of a hexagon.").
+RESULTING ARCHITECTURE
 
-6-subdirectories("Each top level directory has 6 subdirectories, corresponding
-with the lateral vertices of a hexagon.").
+    Immutable address space (spatial scaffold)
 
-adjacency-manifest("The adjacency-manifest file resides within every top level
-directory.  It lists all of the files present within the 6 subdirectories.").
+    Immutable SK8 execution core (logical scaffold)
 
-adjacency-address("The adjacency address file resides within every top level
-directory.  It contains the hexgate address for that top level directory.  Only
-the top level directories have hexgate addresses.  This ensures efficient use of 
-the directory space.")
+    Mutable file-system data (content that rides on the scaffold)
+
+The whole system “grows” rather than being pre-allocated: permanent hexagonal cells provide stable hooks; everything else can be created, linked, or torn down at will.

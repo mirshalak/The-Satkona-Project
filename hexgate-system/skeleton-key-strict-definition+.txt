@@ -8,7 +8,7 @@ The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 004(r>, "Push the top of the parameter stack, to the top of the return stack").
 005(r<, (Push the top of the return stack, to the top of the parameter stack").
 006(dup, "Duplicate the top of the parameter stack"). 
-007(, "Print all cells of the stack").
+007(r@, "Print cell count of return stack").
 008(:, "Compile new words from currently existing words").
 
 sk8-purpose("To create a semantic framework and execution model, which
@@ -58,6 +58,16 @@ export class SK8 {
       const b = this.stack.pop();
       const a = this.stack.pop();
       this.stack.push(a - b);
+    });
+
+    this.define('.', () => {
+    const value = this.stack.pop();
+
+    const p = Deno.run({
+    cmd: ["echo", String(value)],
+    stdout: "inherit",
+    stderr: "inherit",
+      });
     });
 
     this.define('>r', () => {

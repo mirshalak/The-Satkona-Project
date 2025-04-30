@@ -15,56 +15,18 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-## Hexgate System
+sysdsc(system-description) 
 
-subject(hexgate addressing system).
+sysdsc+01(Addressing system for a system of portals
+called Hexgates; an alternate version of the Stargates from that IP).
 
-definition(Extensible addressing system.  This originated for use with a
-stargate network within a proposed computer game, but has since been found to
-have other applications).
+sysdsc+02(May be used for any system where objects require unique
+identification).  
 
-warning(This document describes the most foundational element of our entire 
-system.  It is that on which everything else is based.  Changes to it 
-should therefore only be made *very* rarely, and with *extreme* care).
+sysdsc+03(12 registers, 3 digits, 0-9).  
 
-hexgate-frame-shape(pointy top hexagon, with the upper isosceles triangles of
-two lower adjacent hexagons, as lateral supports).
-
-hexgate-frame-long-diagonal(8.125 meters).
-hexgate-frame-constituent-hexagons-shape(flat top).
-hexgate-frame-constituent-hexagons(13 per side).
-hexgate-frame-constituent-hexagons-long-diagonal(0.625 meters)
-hexgate-vertices(6).
-hexgate-midpoints(6).
-hexgate-register-display-definition+01(present on the front (facing the user)
-of the hexgate's 6 vertices and 6 midpoints).
-hexgate-register-display-definition+02(7 segment LED).
-
-register-definition+01(memory cells for storing address segments).
-register-definition+02(12 registers in total).
-register-definition+03(All registers contain 3 digits).
-register-definition+04(Each digit has a valid range of 0-9).
-register-definition+05(Hexgate addresses are read from right to left; from
-register 12 to register 1.  Register 12 contains the smallest set; the specific
-current object or gate being referenced.  Register 1 references the highest
-set)    
-
-
-{
-  "registers": [
-    {"register": 1, "value": "001"},
-    {"register": 2, "value": "098"},
-    {"register": 3, "value": "639"},
-    {"register": 4, "value": "513"},
-    {"register": 5, "value": "096"},
-    {"register": 6, "value": "733"},
-    {"register": 7, "value": "491"},
-    {"register": 8, "value": "511"},
-    {"register": 9, "value": "977"},
-    {"register": 10, "value": "946"},
-    {"register": 11, "value": "059"},
-    {"register": 12, "value": "167"},
-  ]
-}
+sysdsc+04(registers are read from left to right, from least to most specific).  
+sysdsc+05(register 12 points to real objects; registers 1-11 refer to routing 
+tables).
 
 complete-address-example(001-098-639-512-096-733-491-511-977-946-059-167).

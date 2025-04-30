@@ -30,3 +30,16 @@ sysdsc+05(register 12 points to real objects; registers 1-11 refer to routing
 tables).
 
 complete-address-example(001-098-639-512-096-733-491-511-977-946-059-167).
+
+hexgate-frame-shape(pointy top hexagon, with the upper isosceles triangles of
+two lower adjacent hexagons, as lateral supports).
+
+hexgate-frame-long-diagonal(8.125 meters).
+hexgate-frame-constituent-hexagons-shape(flat top).
+hexgate-frame-constituent-hexagons(13 per side).
+hexgate-frame-constituent-hexagons-long-diagonal(0.625 meters)
+hexgate-vertices(6).
+hexgate-midpoints(6).
+hexgate-register-display-definition+01(present on the front (facing the user)
+of the hexgate's 6 vertices and 6 midpoints).
+hexgate-register-display-definition+02(7 segment LED).

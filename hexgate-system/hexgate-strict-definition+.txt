@@ -29,6 +29,12 @@ sysdsc+04(registers are read from left to right, from least to most specific).
 sysdsc+05(register 12 points to real objects; registers 1-11 refer to routing 
 tables).
 
+sysdsc+06(It is acknowledged that much other functionality could be added for 
+specific use cases, but that will occur within other units.  The strict 
+definition is intended to define the re-usable base primitive only, which may 
+then be duplicated or instantiated into derivative works.  The license is 
+therefore of direct practical importance).
+
 complete-address-example(001-098-639-512-096-733-491-511-977-946-059-167).
 
 hexgate-frame-shape(pointy top hexagon, with the upper isosceles triangles of

@@ -19,10 +19,7 @@ the parameter stack is used as the central data structure.").
 two-stacks("Parameter stack and return stack.").
 parameter-stack-contents("Word parameter data.").
 return-stack-contents("Addresses of 1 or more words to be executed.").
-heap-contents("Definitions and contents of words.").
 parameter-stack("Preferred mechanism for all general-purpose computation.").
-store-and-load-words("Exist solely to support the operation of define-word and execute-word.").
-store-and-load-words("Not to be used otherwise.").
 
 word-addresses("Words are to have Hexgate addresses, following the above 8.").
 

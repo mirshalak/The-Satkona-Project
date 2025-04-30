@@ -2,14 +2,14 @@
 
 The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 
-001:push  (Transmit data to stack memory)
-002:store (Transmit data to register/heap memory)
-003:pop (Receive data from stack memory)   
-004:load (Receive data from register/heap memory)
-005:define-word (This is equivalent to the word compilation pair in FORTH)
-006:execute-word 
-007:add  
-008:subtract
+001(+, "Addition").
+002(-, "Subtraction").
+003(., "Print the top of the stack").   
+004(r>, "Push the top of the parameter stack, to the top of the return stack").
+005(r<, (Push the top of the return stack, to the top of the parameter stack").
+006(dup, "Duplicate the top of the parameter stack"). 
+007(, "Print all cells of the stack").
+008(:, "Compile new words from currently existing words").
 
 sk8-purpose("To create a semantic framework and execution model, which
 allows the reliable generation of code by artificial intelligence.  It has been
@@ -29,112 +29,114 @@ word-addresses("Words are to have Hexgate addresses, following the above 8.").
 loop-branch("Looping and branching are to be achieved via define-word,
 execute-word, and the return stack.").
 
-core-invariance("The core SK8 instruction set (0001–0008) must remain immutable
+core-invariance("The core SK8 instruction set (001–008) must remain immutable
 and distinct from all higher-level or API-specific word dictionaries. This
 ensures minimal survivable execution and prevents dependency pollution.").
 
 word-tokens("Words consist of individual tokens, which begin and end with the space character: ASCII decimal code 32.")
-word-start("define-word")
-word-second-token("word address")
+word-start(":")
+word-second-token("word name")
 word-third-to-last-token("word body")
-word-end("end-define")
-word-example("define-word 0009 0001 42 0001 42 0007 end-define")
+word-end(";")
 
 // sk8_core.js
 
-export class SK8VM {
+export class SK8 {
   constructor() {
-    this.parameterStack = [];
-    this.returnStack = [];
-    this.heap = new Map();
-    this.registers = {};
-    this.hostBindings = {};
+    this.stack = [];
+    this.returnStack = []; 
+    this.dictionary = {};
+
+    // Core Words
+    this.define('+', () => {
+      const b = this.stack.pop();
+      const a = this.stack.pop();
+      this.stack.push(a + b);
+    });
+
+    this.define('-', () => {
+      const b = this.stack.pop();
+      const a = this.stack.pop();
+      this.stack.push(a - b);
+    });
+
+    this.define('>r', () => {
+        this.returnStack.push(this.stack.pop());
+});
+
+    this.define('r>', () => {
+        this.stack.push(this.returnStack.pop());
+});
+
+    this.define('r@', () => {
+        this.stack.push(this.returnStack[this.returnStack.length - 1]);
+}); 
+
+    this.define('dup', () => {
+      const a = this.stack[this.stack.length - 1];
+      this.stack.push(a);
+    });
+
+    this.define(':', (tokens, i) => {
+      const name = tokens[++i];
+      const body = [];
+
+      while (++i < tokens.length && tokens[i] !== ';') {
+        body.push(tokens[i]);
+      }
+
+      this.dictionary[name] = () => this.execute(body);
+      return i; // jump to after ;
+    });
   }
 
-  defineWord({ address, body }) {
-    this.heap.set(String(address), body);
+  define(word, fn) {
+    this.dictionary[word] = fn;
   }
 
-  call(address) {
-    this.returnStack.push(String(address));
-  }
+execute(tokens) {
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
 
-  executeNextWord() {
-    if (this.returnStack.length === 0) {
-      throw new Error("Return stack is empty.");
+    if (token.startsWith('"')) {
+      // Start of a string literal
+      let str = token.slice(1); // remove opening quote
+      while (!tokens[i].endsWith('"') && i + 1 < tokens.length) {
+        i++;
+        str += ' ' + tokens[i];
+      }
+      // Remove closing quote
+      if (tokens[i].endsWith('"')) {
+        str = str.slice(0, -1);
+      }
+      this.stack.push(str);
     }
 
-    const addr = this.returnStack.pop();
-    const word = this.heap.get(String(addr));
-
-    if (!word) {
-      throw new Error(`No word defined at address ${addr}`);
+    else if (!isNaN(token)) {
+      this.stack.push(parseFloat(token));
     }
 
-    for (const opcode of word) {
-      this.executeInstruction(opcode);
+    else if (this.dictionary[token]) {
+      const word = this.dictionary[token];
+      const result = word(tokens, i);
+      if (typeof result === 'number') i = result;
     }
-  }
 
-  executeInstruction(opcode) {
-    const instr = opcode[0];
-    const arg = opcode[1];
-
-    switch (instr) {
-      case 1: // push
-        this.parameterStack.push(arg);
-        break;
-      case 2: // store
-        this.registers[arg] = this.parameterStack.pop();
-        break;
-      case 3: // pop
-        this.parameterStack.pop();
-        break;
-      case 4: // load
-        this.parameterStack.push(this.registers[arg]);
-        break;
-      case 5: // define-word
-        break; // handled externally
-      case 6: // execute-word
-        this.executeNextWord();
-        break;
-      case 7: // add
-        {
-          const b = this.parameterStack.pop();
-          const a = this.parameterStack.pop();
-          this.parameterStack.push(a + b);
-        }
-        break;
-      case 8: // subtract
-        {
-          const b = this.parameterStack.pop();
-          const a = this.parameterStack.pop();
-          this.parameterStack.push(a - b);
-        }
-        break;
-      case 9: // host-bound
-        this.hostCall(arg);
-        break;
-      default:
-        throw new Error(`Unknown opcode: ${instr}`);
+    else {
+      throw new Error(`Unknown word: ${token}`);
     }
-  }
-
-  bindHostFunction(name, fn) {
-    this.hostBindings[name] = fn;
-  }
-
-  hostCall(name) {
-    const fn = this.hostBindings[name];
-    if (!fn) throw new Error(`Host function not found: ${name}`);
-    fn(this);
-  }
-
-  dumpStacks() {
-    return {
-      parameter: [...this.parameterStack],
-      return: [...this.returnStack],
-      heap: [...this.heap.entries()]
-    };
   }
 }
+
+  run(code) {
+    const tokens = code.trim().split(/\s+/);
+    this.execute(tokens);
+  }
+}
+
+// Usage Example
+
+const vm = new SK8();
+
+forth.run(': inc 1 + ;');
+forth.run('1 dup inc dup inc dup inc popall');

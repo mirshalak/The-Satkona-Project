@@ -23,8 +23,9 @@ parameter-stack("Preferred mechanism for all general-purpose computation.").
 
 word-addresses("Words are to have Hexgate addresses, following the above 8.").
 
-loop-branch("Looping and branching are to be achieved via define-word,
-execute-word, and the return stack.").
+selective-delegation("Loops, branches, and text encoding (ASCII/UTF or 
+otherwise) are the responsibility of the host language, and not implemented by 
+SK8 directly.").
 
 core-invariance("The core SK8 instruction set (001–008) must remain immutable
 and distinct from all higher-level or API-specific word dictionaries. This

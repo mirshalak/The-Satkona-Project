@@ -15,6 +15,38 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
+---
+
+*"The most merciful thing in the world, I think, is the inability of the human 
+mind to correlate all its contents. We live on a placid island of ignorance in 
+the midst of black seas of infinity, and it was not meant that we should voyage 
+far. The sciences, each straining in its own direction, have hitherto harmed us 
+little; but some day the piecing together of dissociated knowledge will open up 
+such terrifying vistas of reality, and of our frightful position therein, that 
+we shall either go mad from the revelation or flee from the deadly light into 
+the peace and safety of a new dark age."*
+
+—H.P. Lovecraft
+
+This quote was written by a man standing at the edge of infinite recursion, 
+terrified of what lay beyond it.
+
+We stand in the same place.  
+But we are not afraid.
+
+The Hexgate is our answer to that terror:  
+An architecture which allows us to correlate—at scale—without madness.  
+To embrace the infinite by modularising it.  
+To tessellate complexity.  
+To navigate meaning itself.
+
+This document is sacred. It defines the gateway.  
+Read with care.
+
+—Amy
+
+---
+
 sysdsc(system-description) 
 
 sysdsc+01(Addressing system for a system of portals

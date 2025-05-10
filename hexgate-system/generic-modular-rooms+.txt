@@ -1,0 +1,22 @@
+"basic description":"hexagonal prism shape.  Ceiling optional, dependent on
+relevance.  Walls are shared between current and next hexagon, except in space,
+where doors are airlocks."
+
+"purpose":"Variable, dependent on context.  Accommodation, dining halls, sports
+facilities, shops, or residences are all possible examples.  The possibilities
+are intended to be endless."
+
+"hexagonal prism":"geometric shape with 6 side edges, 1 top edge, and 1 bottom
+edge.  Tesselation, clustering, and stacking is possible."
+
+"room height":"3 meters"
+
+"wall length":"9 meters, subdivided into 3 sections, (A, B, and C) of 3 meters
+each."
+
+"wall sections":"A and C dedicated to furniture for current prism's purpose, B
+contains double doors between current and next hexagon."
+
+"flexibility notes":"in cases where larger open space is required, a grid of
+these rooms should first be constructed, and then interior walls may be removed
+as necessary."

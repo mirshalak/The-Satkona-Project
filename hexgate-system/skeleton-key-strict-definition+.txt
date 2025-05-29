@@ -11,7 +11,11 @@ The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 007(r@, "Print cell count of return stack").
 008(:, "Compile new words from currently existing words").
 
-skeleton-key-purpose("That which is minimally required to form the criteria for functional self-hosting.").
+skeleton-key-purpose("To define that which is minimally required to form the 
+criteria for functional self-hosting.  The Skeleton Key differs from FORTH in the 
+sense that FORTH is traditionally bound to a single host language.  The Skeleton 
+Key, as its' name implies, is intended to instead use potentially any machine, 
+whether virtual or physical, as a potential host.").
 
 two-stacks("Parameter stack and return stack.").
 parameter-stack-contents("Word parameter data.").

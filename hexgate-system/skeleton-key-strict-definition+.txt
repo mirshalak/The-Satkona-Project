@@ -1,6 +1,6 @@
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
+The Skeleton Key, or 7 core functions.  This may be abbreviated to "SK8."
 
 001(+, "Addition").
 002(-, "Subtraction").
@@ -8,8 +8,7 @@ The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 004(r>, "Push the top of the parameter stack, to the top of the return stack").
 005(r<, (Push the top of the return stack, to the top of the parameter stack").
 006(dup, "Duplicate the top of the parameter stack"). 
-007(r@, "Print cell count of return stack").
-008(:, "Compile new words from currently existing words").
+007(:, "Compile new words from currently existing words").
 
 skeleton-key-purpose("To define that which is minimally required to form the 
 criteria for functional self-hosting.  The Skeleton Key differs from FORTH in the 

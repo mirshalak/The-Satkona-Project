@@ -11,10 +11,7 @@ The Skeleton Key, or 8 core functions.  This may be abbreviated to "SK8."
 007(r@, "Print cell count of return stack").
 008(:, "Compile new words from currently existing words").
 
-sk8-purpose("To create a semantic framework and execution model, which
-allows the reliable generation of code by artificial intelligence.  It has been
-observed that language models produce much more elegant and reliable code, when
-the parameter stack is used as the central data structure.").
+skeleton-key-purpose("That which is minimally required to form the criteria for functional self-hosting.").
 
 two-stacks("Parameter stack and return stack.").
 parameter-stack-contents("Word parameter data.").

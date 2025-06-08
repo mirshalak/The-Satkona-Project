@@ -23,6 +23,10 @@ performed by 2 or more SK8 instances working in concert.  This is the lesson
 that was learned from Brainfuck; a language must be able to spawn secondary 
 loops in order to be useful.").
 
+inter-instance-traffic("SK8 instances may only pass numbers between parameter 
+stacks, not word names to be executed.  No direct remote execution is 
+permitted.").
+
 two-stacks("Parameter stack and return stack.").
 parameter-stack-contents("Word parameter data.").
 return-stack-contents("Addresses of 1 or more words to be executed.").

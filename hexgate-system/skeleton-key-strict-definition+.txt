@@ -39,7 +39,7 @@ word-second-token("word name")
 word-third-to-last-token("word body")
 word-end(";")
 
-// sk8_core.js
+// sk7.js
 
 export class SK7 {
   constructor() {

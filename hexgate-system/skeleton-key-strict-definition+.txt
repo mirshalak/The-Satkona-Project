@@ -1,6 +1,6 @@
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 
-The Skeleton Key, or 7 core functions.  This may be abbreviated to "SK8."
+The Skeleton Key; 7 core functions.  This may be abbreviated to "SK7."
 
 001(+, "Addition").
 002(-, "Subtraction").
@@ -9,21 +9,16 @@ The Skeleton Key, or 7 core functions.  This may be abbreviated to "SK8."
 005(r<, (Push the top of the return stack, to the top of the parameter stack").
 006(dup, "Duplicate the top of the parameter stack"). 
 007(:, "Compile new words from currently existing words").
-008(spawn, "If possible, spawn new SK8 instance").
 
-skeleton-key-purpose("To define that which is minimally required to form the 
-criteria for functional self-hosting.  The Skeleton Key differs from FORTH in the 
-sense that FORTH is traditionally bound to a single host language.  The Skeleton 
-Key, as its' name implies, is intended to instead use potentially any machine, 
-whether virtual or physical, as a potential host.").
+skeleton-key-purpose("To define basic functionality, that will allow 
+syntactically consistent functionality, in any programming language to which it 
+is translated.").  
 
-loop-branch("SK8 has no inherent support for looping and branching, other than 
-the return stack.  At the most basic level, looping and branching must be 
-performed by 2 or more SK8 instances working in concert.  This is the lesson 
-that was learned from Brainfuck; a language must be able to spawn secondary 
-loops in order to be useful.").
+not-self-hosting("SK7 is not intended to be either inherently self-hosting or 
+capable of metacompilation.  While both of those features would be nice to have, 
+they require compromises which cripple usability.").
 
-inter-instance-traffic("SK8 instances may only pass numbers between parameter 
+inter-instance-traffic("SK7 instances may only pass numbers between parameter 
 stacks, not word names to be executed.  No direct remote execution is 
 permitted.").
 
@@ -32,13 +27,11 @@ parameter-stack-contents("Word parameter data.").
 return-stack-contents("Addresses of 1 or more words to be executed.").
 parameter-stack("Preferred mechanism for all general-purpose computation.").
 
-word-addresses("Words are to have Hexgate addresses, following the above 8.").
-
 selective-delegation("Loops, branches, and text encoding (ASCII/UTF or 
 otherwise) are the responsibility of the host language, and not implemented by 
-SK8 directly.").
+SK7 directly.").
 
-core-invariance("The core SK8 instruction set (001–008) must remain immutable
+core-invariance("The core SK7 instruction set (001–007) must remain immutable
 and distinct from all higher-level or API-specific word dictionaries. This
 ensures minimal survivable execution and prevents dependency pollution.").
 
@@ -86,10 +79,6 @@ export class SK8 {
     this.define('r>', () => {
         this.stack.push(this.returnStack.pop());
 });
-
-    this.define('r@', () => {
-        this.stack.push(this.returnStack[this.returnStack.length - 1]);
-}); 
 
     this.define('dup', () => {
       const a = this.stack[this.stack.length - 1];

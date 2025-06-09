@@ -7,7 +7,7 @@ During normal operation all addresses shall contain 000 in registers R1–R9.
 Packets breaching this invariant MUST be discarded unless processed by a 
 component explicitly authorised for inter-realm routing.
 
-LAYER 2 — SKELETON KEY 8 (SK8) PRIMITIVES
+LAYER 2 — SKELETON KEY 7 (SK7) PRIMITIVES
 Purpose: minimal permanent instruction set
 
 001(+, "Addition").
@@ -16,8 +16,7 @@ Purpose: minimal permanent instruction set
 004(r>, "Push the top of the parameter stack, to the top of the return stack").
 005(r<, (Push the top of the return stack, to the top of the parameter stack").
 006(dup, "Duplicate the top of the parameter stack"). 
-007(r@, "Print cell count of return stack").
-008(:, "Compile new words from currently existing words").
+007(:, "Compile new words from currently existing words").
 
 LAYER 3 — HEX FILE SYSTEM
 Purpose: fractal storage and navigation
@@ -29,15 +28,5 @@ RULE R — RECURSIVE HEX GROWTH
 Begin with one hexagon; attach a new hex to every free edge, then repeat. This produces an endlessly extensible, self-similar lattice that underpins both storage layout and spatial/virtual planning.
 
 PERMANENT VS. TEMPORARY
-Invariant cores (permanent): Hexgate addressing, SK8 primitives, Rule R geometry, and their axioms—analogous to DNA.
+Invariant cores (permanent): Hexgate addressing, SK7 primitives, Rule R geometry, and their axioms—analogous to DNA.
 Everything else (temporary): user programs and social/economic layers—free to change or be discarded but must interoperate with the cores.
-
-RESULTING ARCHITECTURE
-
-    Immutable address space (spatial scaffold)
-
-    Immutable SK8 execution core (logical scaffold)
-
-    Mutable file-system data (content that rides on the scaffold)
-
-The whole system “grows” rather than being pre-allocated: permanent hexagonal cells provide stable hooks; everything else can be created, linked, or torn down at will.

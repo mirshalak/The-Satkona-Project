@@ -14,22 +14,20 @@ skeleton-key-purpose("To define basic functionality, that will allow
 syntactically consistent functionality, in any programming language to which it 
 is translated.").  
 
+skeleton-key-philosophy("Anything lower level than Python is either dead, dying, 
+or being assimilated by the Rust cult.  The future is Rust, React, and the 
+dystopian vibe code friendly, toy language of the week.  I will not waste time 
+fighting this.  SK7 achieves relative invisibility by relying on the host 
+language for loops and branches.").
+
 not-self-hosting("SK7 is not intended to be either inherently self-hosting or 
 capable of metacompilation.  While both of those features would be nice to have, 
 they require compromises which cripple usability.").
-
-inter-instance-traffic("SK7 instances may only pass numbers between parameter 
-stacks, not word names to be executed.  No direct remote execution is 
-permitted.").
 
 two-stacks("Parameter stack and return stack.").
 parameter-stack-contents("Word parameter data.").
 return-stack-contents("Addresses of 1 or more words to be executed.").
 parameter-stack("Preferred mechanism for all general-purpose computation.").
-
-selective-delegation("Loops, branches, and text encoding (ASCII/UTF or 
-otherwise) are the responsibility of the host language, and not implemented by 
-SK7 directly.").
 
 core-invariance("The core SK7 instruction set (001–007) must remain immutable
 and distinct from all higher-level or API-specific word dictionaries. This

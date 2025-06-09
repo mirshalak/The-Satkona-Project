@@ -43,7 +43,7 @@ word-end(";")
 
 // sk8_core.js
 
-export class SK8 {
+export class SK7 {
   constructor() {
     this.stack = [];
     this.returnStack = []; 
@@ -144,7 +144,7 @@ execute(tokens) {
 
 // Usage Example
 
-const vm = new SK8();
+const vm = new SK7();
 
 vm.run(': inc 1 + ;');
 vm.run('1 dup inc dup inc dup inc . . . .');

@@ -10,15 +10,10 @@ The Skeleton Key; 7 core functions.  This may be abbreviated to "SK7."
 006(dup, "Duplicate the top of the parameter stack"). 
 007(:, "Compile new words from currently existing words").
 
-skeleton-key-purpose("To define basic functionality, that will allow 
-syntactically consistent functionality, in any programming language to which it 
-is translated.").  
-
-skeleton-key-philosophy("Anything lower level than Python is either dead, dying, 
-or being assimilated by the Rust cult.  The future is Rust, React, and the 
-dystopian vibe code friendly, toy language of the week.  I will not waste time 
-fighting this.  SK7 achieves relative invisibility by relying on the host 
-language for loops and branches.").
+skeleton-key-purpose("A minimal, immutable kernel of programmatic semantics, which 
+can be consistently expressed across all host environments, and which establishes 
+a common executable base vocabulary, decoupled from the control flow or syntax 
+of any one language.").  
 
 not-self-hosting("SK7 is not intended to be either inherently self-hosting or 
 capable of metacompilation.  While both of those features would be nice to have, 
@@ -33,7 +28,8 @@ core-invariance("The core SK7 instruction set (001–007) must remain immutable
 and distinct from all higher-level or API-specific word dictionaries. This
 ensures minimal survivable execution and prevents dependency pollution.").
 
-word-tokens("Words consist of individual tokens, which begin and end with the space character: ASCII decimal code 32.")
+word-tokens("Words consist of individual tokens, which begin and end with the space 
+character: ASCII decimal code 32.")
 word-start(":")
 word-second-token("word name")
 word-third-to-last-token("word body")

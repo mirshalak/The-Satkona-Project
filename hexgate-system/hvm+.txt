@@ -1,4 +1,5 @@
-LAYER 1 — HEXGATE ADDRESS SPACE
+# ⬡ LAYER 1 — HEXGATE ADDRESS SPACE
+
 Purpose: universal, fixed topology
 12 registers of 3 decimal digits each (0-9), giving 10^36 unique addresses; 
 every entity can be placed in a single global lattice.
@@ -7,7 +8,9 @@ During normal operation all addresses shall contain 000 in registers R1–R9.
 Packets breaching this invariant MUST be discarded unless processed by a 
 component explicitly authorised for inter-realm routing.
 
-LAYER 2 — SKELETON KEY 7 (SK7) PRIMITIVES
+---
+
+# ⬡ LAYER 2 — SKELETON KEY 7 (SK7) PRIMITIVES
 Purpose: minimal permanent instruction set
 
 001(+, "Addition").
@@ -24,10 +27,23 @@ Core points: each partition has 998 top-level directories numbered 001–999, ea
  adjacency-manifest — lists files in its six subdirectories
  adjacency-address — stores that directory’s Hexgate address
 
-RULE R — RECURSIVE HEX GROWTH
+Example:-
+
+001/1
+001/2
+001/3
+001/4
+001/5
+001/6
+
+---
+
+# ⬡ RULE R — RECURSIVE HEX GROWTH
 Begin with one hexagon; attach a new hex to every free edge, then repeat. This produces an endlessly extensible, self-similar lattice that underpins both storage layout and spatial/virtual planning.
 
-PERMANENT VS. TEMPORARY
+---
+
+# ⬡ PERMANENT VS. TEMPORARY
 Invariant cores (permanent): Hexgate addressing, SK7 primitives, Rule R geometry, and their axioms—analogous to DNA.
 Everything else (temporary): user programs and social/economic layers—free to change or be discarded but must interoperate with the cores.
 

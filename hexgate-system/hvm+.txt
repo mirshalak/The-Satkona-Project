@@ -30,3 +30,71 @@ Begin with one hexagon; attach a new hex to every free edge, then repeat. This p
 PERMANENT VS. TEMPORARY
 Invariant cores (permanent): Hexgate addressing, SK7 primitives, Rule R geometry, and their axioms—analogous to DNA.
 Everything else (temporary): user programs and social/economic layers—free to change or be discarded but must interoperate with the cores.
+
+---
+
+# ⬡ The Dynamic Adjacency Principle
+
+You proposed six vertices labeled 1..6 around a hexagon, with edges named by the *pair* they join. Clockwise, the edges are:
+
+*   **e0 = (1,3)**
+    
+*   **e1 = (3,5)**
+    
+*   **e2 = (5,6)**
+    
+*   **e3 = (6,4)**
+    
+*   **e4 = (4,2)**
+    
+*   **e5 = (2,1)**
+    
+Your rule “only opposite edges can be adjacent” becomes the simple identity:
+
+*   **opposite(e) = (e + 3) mod 6**
+    
+This is the list of possible connections:
+
+(4,2) to (3,5) = e4 to e1; 
+(1,3) to (6,4) = e0 to e3; 
+(5,6) to (2,1) = e2 to e5.
+
+Keep that function visible in your code and (subtly) visible in the UI: players should *see* which pairing is legal at any moment.
+
+Example address connection:-
+
+Source address:- 225-811-948-556-055-072-507-595-452-000-524-056:3,5
+
+Destination address:- 784-326-695-852-223-275-232-570-282-870-489-231:4,2
+
+This is the principle by which the TARDIS is believed to hypothetically function.  Only the external face of the door changes its’ location, to become adjacent to the desired location in either time or space.  The TARDIS’s interior does not move at all.
+
+---
+
+# ⬡ The 7-hex UI cluster
+
+*   **Center cell**: persistent “status & context” panel (inventory, map context, or focused object details).
+    
+*   **Six neighbors**: each is a **module socket** (crafting, building, farming, logistics, combat, settings).
+    
+*   **Adjacency = Routing**: changing which *edge* of the center is connected to which remote cell routes the center’s “Now” to a different module *without* leaving the cluster. Think of it as patch-cords in a modular synth, but with only valid opposite-edge snaps.
+    
+### Why this is ergonomic
+
+*   The center never moves (rock-solid anchor).
+    
+*   Six directions map well to fingers or number keys (1..6).
+    
+*   Opposites-only keeps the graph planar and prevents spaghetti.
+    
+---
+
+# ⬡ Inherent modular dependency support for programming
+
+*  A program and its’ dependencies are visualised as a central hexagonal cell, surrounded by a ring of 6 hexagonal cells.
+
+*  The central cell corresponds with the main loop.
+
+*  The 6 adjacent cells correspond with imported libraries or dependencies.
+
+*  Every program that is written, assumes a main loop/evocation function, and up to 6 dependencies.  If there are less than 6, the unused edges will return NULL or NOP if called, but will still be made explicit, to preserve consistency.

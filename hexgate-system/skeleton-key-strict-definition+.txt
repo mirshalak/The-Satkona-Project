@@ -10,10 +10,8 @@ The Skeleton Key; 7 core functions.  This may be abbreviated to "SK7."
 006(dup, "Duplicate the top of the parameter stack"). 
 007(:, "Compile new words from currently existing words").
 
-skeleton-key-purpose("A minimal, immutable kernel of programmatic semantics, which 
-can be consistently expressed across all host environments, and which establishes 
-a common executable base vocabulary, decoupled from the control flow or syntax 
-of any one language.").  
+skeleton-key-purpose("To allow syntactically consistent functionality, in any 
+programming language to which it is translated.").  
 
 not-self-hosting("SK7 is neither inherently self-hosting, nor Turing complete.  
 Looping and branching are performed by the host language.  SK7's purpose is not 

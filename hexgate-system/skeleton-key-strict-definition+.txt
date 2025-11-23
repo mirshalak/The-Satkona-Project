@@ -16,8 +16,8 @@ a common executable base vocabulary, decoupled from the control flow or syntax
 of any one language.").  
 
 not-self-hosting("SK7 is neither inherently self-hosting, nor Turing complete.  
-Looping and branching are performed by the host language").
-
+Looping and branching are performed by the host language.  SK7's purpose is not 
+to be a Turing machine itself, but to create a consistent interface for others").
 
 two-stacks("Parameter stack and return stack.").
 parameter-stack-contents("Word parameter data.").

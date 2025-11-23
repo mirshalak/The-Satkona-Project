@@ -15,9 +15,9 @@ can be consistently expressed across all host environments, and which establishe
 a common executable base vocabulary, decoupled from the control flow or syntax 
 of any one language.").  
 
-not-self-hosting("SK7 is not intended to be either inherently self-hosting or 
-capable of metacompilation.  While both of those features would be nice to have, 
-they require compromises which cripple usability.").
+not-self-hosting("SK7 is neither inherently self-hosting, nor Turing complete.  
+Looping and branching are performed by the host language").
+
 
 two-stacks("Parameter stack and return stack.").
 parameter-stack-contents("Word parameter data.").
@@ -142,3 +142,10 @@ const vm = new SK7();
 
 vm.run(': inc 1 + ;');
 vm.run('1 dup inc dup inc dup inc . . . .');
+vm.run(': payload "hello" . ;');
+
+vm.run('5 5 + ');
+var = this.stack.pop();
+if (var === 10) {
+vm.run('payload');
+}

@@ -5,8 +5,8 @@ The Skeleton Key; 7 core functions.  This may be abbreviated to "SK7."
 001(+, "Addition").
 002(-, "Subtraction").
 003(., "Print the top of the stack").   
-004(r>, "Push the top of the parameter stack, to the top of the return stack").
-005(r<, (Push the top of the return stack, to the top of the parameter stack").
+004(drop, "Pop the top of the parameter stack, without printing").
+005(swap, ("Swap the top two cells from the parameter stack").
 006(dup, "Duplicate the top of the parameter stack"). 
 007(:, "Compile new words from currently existing words").
 
@@ -66,13 +66,22 @@ export class SK7 {
       });
     });
 
-    this.define('>r', () => {
-        this.returnStack.push(this.stack.pop());
-});
+    // ── New core word: drop ( x -- )
+    this.define('drop', () => {
+      // You can add an underflow check if you want:
+      if (this.stack.length < 1) throw new Error("Stack underflow in drop");
+      this.stack.pop();
+    });
 
-    this.define('r>', () => {
-        this.stack.push(this.returnStack.pop());
-});
+    // ── New core word: swap ( a b -- b a )
+    this.define('swap', () => {
+      // Optional safety:
+      if (this.stack.length < 2) throw new Error("Stack underflow in swap");
+      const b = this.stack.pop();
+      const a = this.stack.pop();
+      this.stack.push(b);
+      this.stack.push(a);
+    });
 
     this.define('dup', () => {
       const a = this.stack[this.stack.length - 1];

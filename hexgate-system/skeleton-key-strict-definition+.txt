@@ -17,7 +17,9 @@ of any one language.").
 
 not-self-hosting("SK7 is neither inherently self-hosting, nor Turing complete.  
 Looping and branching are performed by the host language.  SK7's purpose is not 
-to be a Turing machine itself, but to create a consistent interface for others").
+to be a Turing machine itself, but to create a consistent interface for others.  
+Primitives and intermediates are constructed as words for the vm, and then flow 
+control (looping, branching) is performed by the host language.").
 
 two-stacks("Parameter stack and return stack.").
 parameter-stack-contents("Word parameter data.").
